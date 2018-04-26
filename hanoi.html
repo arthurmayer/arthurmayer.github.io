@@ -1,0 +1,79 @@
+<!--
+    Hanoi Game HTML File
+-->
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width", intitial-scale="1.0"/>
+        <title>CSCI Final Project - Towers of Hanoi</title>
+        <link rel="stylesheet" href="./hanoi.css">
+    </head>
+    <body>
+        <p id="move_count">Move Count: 0</p>
+        <p id="highscore">Best Move Count: </p>
+        <button onclick="reset()">Reset</button>
+        <button onclick="resetHighScore()">Reset HighScore</button>
+        <button id="mute-btn" onclick="mute()">Mute</button>
+        <button onClick="drawGame()">Draw?</button>
+        <br/>
+        <form>
+            <input type="radio" name="difficulty" value="easy" checked> 5
+            <input type="radio" name="difficulty" value="medium"> 6
+            <input type="radio" name="difficulty" value="hard"> 7
+          </form>
+        <br/>
+        <div id="hanoi_display">
+            <table style="width:100%">
+                <caption>Towers of Hanoi</caption>
+                <tr>
+                  <td id="row11" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <img src="./images/Hanoi1.png" draggable="true" ondragstart="drag(event)" width="100%"/>
+                  </td>
+                  <td id="row12" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <img src="./images/Hanoi1.png" draggable="true" ondragstart="drag(event)" width="100%"/>
+                  </td>
+                  <td id='row13' ondrop="drop(event)" ondragover="allowDrop(event)" width="30%"></td>
+                </tr>
+                <tr>
+                    <td id="row21" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img src="./images/Hanoi2.png" draggable="true" ondragstart="drag(event)" width="100%"/>
+                    </td>
+                    <td id="row22" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td id='row23' ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                </tr>
+                <tr height="30%">
+                    <td id="row31" ondrop="drop(event)" ondragover="allowDrop(event)" height="14%">
+                        <img src="./images/Hanoi3.png" draggable="true" ondragstart="drag(event)" width="100%"/>
+                    </td>
+                    <td id="row32" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td id='row33' ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                </tr>
+                <tr>
+                    <td id="row41" ondrop="drop(event)" ondragover="allowDrop(event)" height="14%">
+                        <img src="./images/Hanoi4.png" draggable="true" ondragstart="drag(event)" width="100%"/>
+                    </td>
+                    <td id="row42" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td id='row43' ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                </tr>
+                <tr>
+                    <td id="row51" ondrop="drop(event)" ondragover="allowDrop(event)" height="14%"></td>
+                    <td id="row52" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td id='row53' ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                </tr>
+                <tr>
+                    <td id="row61" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td id="row62" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td id='row63' ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                </tr>
+                <tr>
+                    <td id="row71" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td id="row72" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td id='row73' ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                </tr>
+              </table>
+        </div>
+    </body>
+<script src="hanoi.js"></script>
+</html>

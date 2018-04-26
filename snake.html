@@ -1,0 +1,37 @@
+<!--
+Snake Game HTML File
+-->
+
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSCI446 Final Project - Snake Game</title>
+  <link rel="stylesheet" href="./snake.css">
+ </head>
+ <body>
+
+  <audio id="die">
+   <source src="sounds/explosion_.wav" type="audio/wav">
+  Your browser does not support the audio element.
+  </audio>
+
+  <audio id="get">
+   <source src="sounds/coin2_.ogg" type="audio/ogg">
+  </audio>
+
+  <p id="score">Your Score: 0</p>
+  <p id="highscore">HighScore: </p>
+  <button onclick="reset()">Reset</button>
+  <button onclick="resetHighScore()">Reset HighScore</button>
+  <br/>
+  <br/>
+
+  <canvas id="board" width="400" height="400"></canvas>
+
+  <form action="./hanoi.html" id="next" />
+
+ </body>
+<script src="snake.js"></script>
+</html>

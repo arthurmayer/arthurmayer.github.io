@@ -1,23 +1,36 @@
----
-layout: default
----
+<!-- 
+Dallas Andersen
+Robert Imbler
+Arthur Mayer
+CSCI446 Final Project
+HTML File
+-->
 
-<div class="home">
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSCI446 Final Project</title>
+  <link rel="stylesheet" href="./final.css">
+ </head>
+ <body>
 
-  <h1 class="page-heading">Posts</h1>
+   <p id="score"></p>
+   <p id="highscore"></p>
+   <button onclick="randomize()">Reset</button>
+   <button onclick="resetHighScore()">Reset HighScore</button>
+   <p/>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+   <!-- Table of cells. -->
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+   <div id="board">
+    <table id="board_table">
+    </table>
+   </div>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+   <form action="./snake.html" id="next"/>
 
-</div>
+ </body>
+<script src="final.js"></script>
+</html>

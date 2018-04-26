@@ -1,0 +1,27 @@
+/*
+Dallas Andersen
+Robert Imbler
+Arthur Mayer
+CSCI446 Final Project
+Hanoi CSS file
+*/
+
+canvas{
+	background-color: black;
+}
+table, tr {
+    padding: 15px;
+}
+tr {
+    height: "14%";
+}
+td {
+    width: "33%";
+}
+table, td, tr {
+    border: 1px solid black;
+}
+div {
+    border: 1px solid black;
+    padding: 15px;
+}
