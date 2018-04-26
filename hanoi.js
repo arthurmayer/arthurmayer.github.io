@@ -14,127 +14,109 @@ var highScore = 0;
 var bricks = [];
 var poles = [];
 var difficulty = 5; // 5, 6, 7
+var difficultyDict = {'easy' : 5, 'medium':6, 'hard':7};
+var movesDict = {5:50, 6:100, 7:150};
 var poleTops = [0,0,0];
 var isMuted = false;
-
+var scoreName = "";
 // BUTTON FUNCTIONS
-
+function setName(){
+    scoreName = window.prompt("Enter a name for the highscore", "Hanoi").toString();
+    if (typeof(Storage) != "undefined") {
+        localStorage.setItem("HanoiName", scoreName);
+    } else {
+        //alert no highscore kept
+        alert("Sorry, your browser does not support Web Storage, Highscore will not be saved");
+    }
+    //update highscore if any update
+    document.getElementById("scorename").innerHTML="Scored by: " + localStorage.getItem("HanoiName").toString();
+    
+}
+//reset name
+function resetName(){
+    // Check browser support
+    if (typeof(Storage) != "undefined") {
+        localStorage.setItem("HanoiName", "Hanoi");
+    } else {
+        //alert no highscore kept
+        alert("Sorry, your browser does not support Web Storage, Highscore will not be saved");
+    }
+    //update highscore if any update
+    document.getElementById("scorename").innerHTML="Scored by: " + localStorage.getItem("HanoiName").toString();
+}
 // manage the mute functionality of the game
 function mute() {
     // invert mute setting on click and modify button text
     if (isMuted) {
         isMuted = false;
+         document.getElementById("get").muted = true;
         document.getElementById("mute-btn").innerHTML = "Mute";
     }
     else {
         isMuted = true;
+         document.getElementById("get") = false;
         document.getElementById('mute-btn').innerHTML = "Un-Mute";
     }
 }
-
-// CLASS DECLARATIONS
-
-class Pole {
-    constuctor(index){
-        this.color = poleColor;
-        this.x = poleSpacing * index + offset;
-        this.y = offset;
+function difficultyChange(ev) {
+    elem = document.getElementById("difficultyRadio");
+    for (var i = 0; i< elem.length; i++) {
+        if(elem[i].checked) {
+            output = (elem[i].value);
+            difficulty = difficultyDict[elem[i].value];
+        }
     }
-}
-
-class Brick {
-    constructor(size){
-        this.size = size;
-        this.image = "./images/Hanoi" + size.toString + ".png";
-    }
-    // 'Shift less than'
-    slt(brick) {
-        return this.size < brick.size;
-    }
+    //console.log(elem, ev);
+    console.log("changed to " + output + " difficulty!");
+    createTable();
 }
 
 // GAME FUNCTIONS
 
-function allowDrop(event) {
-    event.preventDefault();
-}
-
-function drag(event) {
-    event.dataTransfer.setData("text", event.target.id);
-}
-
-function drop(event) {
-    event.preventDefault();
-    var data = event.dataTransfer.getData("text");
-    event.target.appendChild(document.getElementById(data));
-}
-
-// init global game pieces
-function init() {
-    for (var i = 1; i<=7; i++){
-        bricks.push(new Brick(i))
-        document.getElementById("row" + i.toString + "1").innerHTML += 
-        '<img id="drag' + i.toString + ' src=' + bricks[i-1].image.toString + ' draggable="true" ' 
-        + 'ondragstart="drag(event)"/>';
-    }
-    /*
-    document.getElementById("hanoi_display").innerHTML += '<table style="width:100%">';
-    for (var i = 0; i < 7; i++) {
-        document.getElementById("hanoi_display").innerHTML += '<tr name=' + i.toString + '>';
-        for (var j = 0; j < 3; j++) {
-            document.getElementById("hanoi_display").innerHTML += '<td>'
-                + '<div id="div' + i.toString + j.toString + '" ondrop="drop(event) ondragover="allowDrop(event)">stuff</div></td>';
-        }
-        document.getElementById("hanoi_display").innerHTML += '</tr><br/>';
-    }
-    document.getElementById("hanoi_display").innerHTML += '</table>';
+function allowDrop(ev) {
+    ev.preventDefault();
     
-    for (var i = 0; i < difficulty; i++){
-        if (i < 3) {
-            poles.push(new Pole(i))
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    //Check if block can be moved
+    var tar = ev.target;
+    var canDrop = true;
+    if (tar.id <= 3 * (difficulty - 1)) {
+        while (tar.id <= 3 * (difficulty - 1) && document.getElementById((parseInt(tar.id, 10) + 3).toString()).innerHTML == "") {
+            document.getElementById((parseInt(tar.id, 10) + 3).toString()).innerHTML = tar.innerHTML;
+            tar.innerHTML = "";
+            tar = document.getElementById((parseInt(tar.id, 10) + 3).toString());
         }
-        bricks.push(new Brick(i))
     }
-    console.log("Variables initialized")
-    */
-}
-
-// Draw Pole
-function drawPole(pole) {
-    context.beginPath();
-    context.fillStyle = pole.color;
-    context.fillRect(pole.x, pole.y, brickSize, poleHeight);
-    //console.log("Pole drawn");
-}
-
-//Draw Brick
-function drawBrick(brick) {
-    context.beginPath();
-    context.fillStyle = brick.color;
-    context.fillRect(brick.x, brick.y, brick.width, brickSize);
-    //console.log("Brick drawn");
-}
-
-// Draw line at the base of the canvas 
-function drawBase(){
-    context.beginPath();
-    context.strokeStyle = 'dimgrey';
-    context.lineWidth = 1.0;
-    context.beginPath();
-    context.moveTo(0,0);
-    context.lineTo(400, 0);
-    context.stroke();
-}
-
-// Recurrent Draw all Elem fxn
-function drawGame() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    drawBase();
-    for (item in poles) {
-        drawPole(item);
+    if (tar.id <= 3 * (difficulty - 1)){
+        canDrop = document.getElementById((parseInt(tar.id, 10) + 3)).innerHTML > image;
     }
-    for (item in bricks) {
-        drawBrick(item);
+    if (srcId > 3){
+        if (document.getElementById((parseInt(srcId, 10) - 3)).innerHTML != "") {
+            canDrop = false;
+        }
+    }
+
+    if (!canDrop && !isMuted) {
+        document.getElementById("err").play();
+    }
+    if (ev.target.tagName != "IMG" && canDrop) {
+        tar = ev.target;
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+        if (tar.id <= 3 * (difficulty - 1)) {
+            while (tar.id <= 3 * (difficulty - 1) && document.getElementById((parseInt(tar.id, 10) + 3).toString()).innerHTML == "") {
+                document.getElementById((parseInt(tar.id, 10) + 3).toString()).innerHTML = tar.innerHTML;
+                tar.innerHTML = "";
+                tar = document.getElementById((parseInt(tar.id, 10) + 3).toString());
+            }
+        }
     }
 }
 
@@ -146,6 +128,10 @@ function reset(){
 function saveScore(score){
     // Check browser support
     if (typeof(Storage) != "undefined") {
+        //called first so set name 
+        if(localStorage.getItem("HanoiName") == null){
+            localStorage.setItem("HanoiName", "Hanoi");
+        }
         // Store if score is greater than highscore
         if(score < localStorage.getItem("HighscoreHanoi")){
             localStorage.setItem("HighscoreHanoi", score);
@@ -156,18 +142,74 @@ function saveScore(score){
     }
     //update highscore if any update
     document.getElementById("highscore").innerHTML="Best Move Count: " + localStorage.getItem("HighscoreHanoi").toString();
+    document.getElementById("scorename").innerHTML="Scored by: " + localStorage.getItem("HanoiName").toString();
 }
 //reset highscore
 function resetHighScore(){
     //TODO change highscore later
     localStorage.setItem("Highscore", 150);
     document.getElementById("highscore").innerHTML="Best Move Count: " + localStorage.getItem("HighscoreHanoi").toString();
+    document.getElementById("scorename").innerHTML="Scored by: " + localStorage.getItem("HanoiName").toString();
 }
 
 
 // SUPERFICIAL GAME LOGIC
 
-init();
+//init();
+
+
+
+var image;
+var srcId;
+
+
+function changeId(img) {
+    image = img.innerHTML;
+    srcId = img.id;
+}
+
+
+
+function createTable() {
+    var rowNum = 0;
+    var index = 0;
+    var table = document.getElementById("board_table");
+    document.getElementById("move_count").innerHTML = ("Move Count: " + movesDict[difficulty]);
+    table.innerHTML = "";
+	for (var j=0; j<difficulty; j++){
+		var row = table.insertRow(rowNum);
+		rowNum++;
+		for(var i=0; i<3; i++) {
+			//var ID = j*DIMENSION + i + 1;
+			var newcell = row.insertCell(i);
+			if (i==0){
+			    newcell.innerHTML = "<div id=" + (++index).toString() + " ondragstart='changeId(this)' ondrop='drop(event)' ondragover='allowDrop(event)'><img src='./images/hanoi" + (j + 1).toString() + ".png' onclick='changeId(this)' draggable='true' ondragstart='drag(event)' width='100%' id='img" + index.toString() + "'></div>";
+			}
+			else{
+			    newcell.innerHTML = "<div id=" + (++index).toString() + " ondragstart='changeId(this)' ondrop='drop(event)' ondragover='allowDrop(event)' height='100%'></div>";
+			}
+		}
+	}
+}
+
+createTable();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 Challenge 3 - Towers of Hanoi
