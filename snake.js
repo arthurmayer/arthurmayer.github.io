@@ -22,6 +22,7 @@ var apple;
 var muted = false;
 var newHighscore = false;
 var scoreName = "";
+
 window.onkeydown = function(e){
 	if (!gameStart){
 		gameStart = true;
