@@ -19,9 +19,6 @@ var invincibility = false;
 var timer;
 var snake;
 var apple;
-var muted = false;
-var newHighscore = false;
-var scoreName = "";
 window.onkeydown = function(e){
 	if (!gameStart){
 		gameStart = true;
@@ -59,49 +56,7 @@ window.onkeydown = function(e){
 			break;
 	}
 }
-//mute button
-function mute(){
-    if(muted == false){
-        document.getElementById("get").muted = true;
-        document.getElementById("die").muted = true;
-        document.getElementById("mute").innerHTML="un-mute";
-        console.log("muted");
-        muted = true;
-    }
-    else{
-        muted = false;
-        document.getElementById("get").muted = false;
-        document.getElementById("die").muted = false;
-        document.getElementById("mute").innerHTML="mute";
-        console.log("unmuted");
-    }
-    
-}
-function setName(){
-    scoreName = window.prompt("Enter a name for the highscore", "Snake").toString();
-    if (typeof(Storage) != "undefined") {
-        localStorage.setItem("SnakeName", scoreName);
-    } else {
-        //alert no highscore kept
-        alert("Sorry, your browser does not support Web Storage, Highscore will not be saved");
-    }
-    //update highscore if any update
-    document.getElementById("scorename").innerHTML="Scored by: " + localStorage.getItem("SnakeName").toString();
-    
-}
-//reset name
-function resetName(){
-    // Check browser support
-    if (typeof(Storage) != "undefined") {
-        // Store if score is greater than highscore
-        localStorage.setItem("SnakeName", "Snake");
-    } else {
-        //alert no highscore kept
-        alert("Sorry, your browser does not support Web Storage, Highscore will not be saved");
-    }
-    //update highscore if any update
-    document.getElementById("scorename").innerHTML="Scored by: " + localStorage.getItem("SnakeName").toString();
-}
+
 //function call for saving score
 function saveScore(score){
     // Check browser support
@@ -111,7 +66,6 @@ function saveScore(score){
             localStorage.setItem("HighscoreSnake", 0);
         }
         if(score > localStorage.getItem("HighscoreSnake")){
-            newHighscore = true;
             localStorage.setItem("HighscoreSnake", score);
         }
     } else {
@@ -120,7 +74,6 @@ function saveScore(score){
     }
     //update highscore if any update
     document.getElementById("highscore").innerHTML="High Score: " + localStorage.getItem("HighscoreSnake").toString();
-    document.getElementById("scorename").innerHTML="Scored by: " + localStorage.getItem("SnakeName").toString();
 }
 //reset highscore
 function resetHighScore(){
@@ -328,13 +281,12 @@ function drawGame(){
 		else{
 			updateGame();
 		}*/
-        if(gameLost && newHighscore){
-            newHighscore = false;
-            setName();
-        }
 	}
 }
 
 reset();
 
+//TODO: Allow messages to appear on canvas so user knows what to do.
 //TODO: User clicks something on canvas to restart game rather than hitting reset button?
+//TODO: Save state
+//TODO: Connect to part 1 and part 3

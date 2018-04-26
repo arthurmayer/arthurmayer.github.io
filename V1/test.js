@@ -15,7 +15,7 @@ var bricks = [];
 var poles = [];
 var difficulty = 5; // 5, 6, 7
 var difficultyDict = {'easy' : 5, 'medium':6, 'hard':7};
-var movesDict = {1:50, 5:50, 6:100, 7:200};
+var movesDict = {5:50, 6:100, 7:150};
 var poleTops = [0,0,0];
 var isMuted = false;
 var scoreName = "";
@@ -30,6 +30,7 @@ function setName(){
     }
     //update highscore if any update
     document.getElementById("scorename").innerHTML="Scored by: " + localStorage.getItem("HanoiName").toString();
+    
 }
 //reset name
 function resetName(){
@@ -48,12 +49,12 @@ function mute() {
     // invert mute setting on click and modify button text
     if (isMuted) {
         isMuted = false;
-        document.getElementById("get").muted = false;
+         document.getElementById("get").muted = true;
         document.getElementById("mute-btn").innerHTML = "Mute";
     }
     else {
         isMuted = true;
-        document.getElementById("get").muted = true;
+         document.getElementById("get") = false;
         document.getElementById('mute-btn').innerHTML = "Un-Mute";
     }
 }
@@ -74,6 +75,7 @@ function difficultyChange(ev) {
 
 function allowDrop(ev) {
     ev.preventDefault();
+    
 }
 
 function drag(ev) {
@@ -84,12 +86,6 @@ function drop(ev) {
     //Check if block can be moved
     var tar = ev.target;
     var canDrop = true;
-    if (moveCount < 1) {
-        alert("You are out of moves! Please try again!");
-        return;
-    }
-    moveCount--;
-    document.getElementById("move_count").innerHTML = ("Move Count: " + moveCount);
     if (tar.id <= 3 * (difficulty - 1)) {
         while (tar.id <= 3 * (difficulty - 1) && document.getElementById((parseInt(tar.id, 10) + 3).toString()).innerHTML == "") {
             document.getElementById((parseInt(tar.id, 10) + 3).toString()).innerHTML = tar.innerHTML;
@@ -97,7 +93,6 @@ function drop(ev) {
             tar = document.getElementById((parseInt(tar.id, 10) + 3).toString());
         }
     }
-    
     if (tar.id <= 3 * (difficulty - 1)){
         canDrop = document.getElementById((parseInt(tar.id, 10) + 3)).innerHTML > image;
     }
@@ -106,9 +101,7 @@ function drop(ev) {
             canDrop = false;
         }
     }
-    if(canDrop ){
-        document.getElementById("get").play();
-    }
+
     if (!canDrop && !isMuted) {
         document.getElementById("err").play();
     }
@@ -125,18 +118,10 @@ function drop(ev) {
             }
         }
     }
-    if (moveCount == 0) {
-        setTimeout(alert("You are out of moves!"), 3000);
-    }
-    if (document.getElementById('3').innerHTML!=''){
-        alert("you win!");
-        console.log('Player wins with '+moveCount + ' movevs left!');
-        saveScore(moveCount);
-    }
 }
 
 function reset(){
-	createTable();
+	console.log("NEEDS TO BE IMPLEMENTED");
 }
 
 //function call for saving score
@@ -148,9 +133,8 @@ function saveScore(score){
             localStorage.setItem("HanoiName", "Hanoi");
         }
         // Store if score is greater than highscore
-        if(score > localStorage.getItem("HighscoreHanoi")){
+        if(score < localStorage.getItem("HighscoreHanoi")){
             localStorage.setItem("HighscoreHanoi", score);
-            localStorage.setItem("HanoiName", prompt("Please Enter your Name, Winner!", 'Hanoi'));
         }
     } else {
         //alert no highscore kept
@@ -162,11 +146,10 @@ function saveScore(score){
 }
 //reset highscore
 function resetHighScore(){
+    //TODO change highscore later
     localStorage.setItem("Highscore", 150);
-    document.getElementById("highscore").innerHTML="Best Move Count: 0";
-    document.getElementById("scorename").innerHTML="Scored by: " 
-    localStorage.setItem("HanoiName", 'Hanoi');
-    localStorage.setItem("HighscoreHanoi",0);
+    document.getElementById("highscore").innerHTML="Best Move Count: " + localStorage.getItem("HighscoreHanoi").toString();
+    document.getElementById("scorename").innerHTML="Scored by: " + localStorage.getItem("HanoiName").toString();
 }
 
 
@@ -191,8 +174,7 @@ function createTable() {
     var rowNum = 0;
     var index = 0;
     var table = document.getElementById("board_table");
-    moveCount = movesDict[difficulty];
-    document.getElementById("move_count").innerHTML = ("Move Count: " + moveCount);
+    document.getElementById("move_count").innerHTML = ("Move Count: " + movesDict[difficulty]);
     table.innerHTML = "";
 	for (var j=0; j<difficulty; j++){
 		var row = table.insertRow(rowNum);
@@ -204,7 +186,7 @@ function createTable() {
 			    newcell.innerHTML = "<div id=" + (++index).toString() + " ondragstart='changeId(this)' ondrop='drop(event)' ondragover='allowDrop(event)'><img src='./images/hanoi" + (j + 1).toString() + ".png' onclick='changeId(this)' draggable='true' ondragstart='drag(event)' width='100%' id='img" + index.toString() + "'></div>";
 			}
 			else{
-			    newcell.innerHTML = "<div id=" + (++index).toString() + " ondragstart='changeId(this)' ondrop='drop(event)' ondragover='allowDrop(event)' width='100%'></div>";
+			    newcell.innerHTML = "<div id=" + (++index).toString() + " ondragstart='changeId(this)' ondrop='drop(event)' ondragover='allowDrop(event)' height='100%'></div>";
 			}
 		}
 	}

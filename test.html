@@ -1,0 +1,39 @@
+<!--
+    Hanoi Game HTML File
+-->
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width", intitial-scale="1.0"/>
+        <title>CSCI Final Project - Towers of Hanoi</title>
+        <link rel="stylesheet" href="./test.css">
+    </head>
+    <body>
+        <audio id="get">
+            <source src="sounds/coin2_.ogg" type="audio/ogg">
+        </audio>
+        <p id="move_count">Move Count: 0</p>
+        <p id="highscore">Best Move Count: </p>
+        <p id="scorename">Best Score by: </p>
+        <button onclick="reset()">Reset</button>
+        <button onclick="resetHighScore()">Reset HighScore</button>
+        <button onclick="resetName()">Reset Name</button>
+        <button id="mute-btn" onclick="mute()">Mute</button>
+        <br/>
+        <form id="difficultyRadio" onclick="difficultyChange(event)">
+            <input type="radio" name="difficulty" value="easy" checked> 5
+            <input type="radio" name="difficulty" value="medium"> 6
+            <input type="radio" name="difficulty" value="hard"> 7
+          </form>
+        <br/>
+        <table style="width:100%, table-layout=fixed" id="board_table"></table>
+    </body>
+
+    <audio id="err">
+     <source src="sounds/yeti_gna_.wav" type="audio/wav">
+    Your browser does not support the audio tag.
+    </audio>
+<script src="test.js"></script>
+</html>
