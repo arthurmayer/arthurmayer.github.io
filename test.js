@@ -201,7 +201,7 @@ function createTable() {
 			//var ID = j*DIMENSION + i + 1;
 			var newcell = row.insertCell(i);
 			if (i==0){
-			    newcell.innerHTML = "<div id=" + (++index).toString() + " ondragstart='changeId(this)' ondrop='drop(event)' ondragover='allowDrop(event)'><img src='./images/hanoi" + (j + 1).toString() + ".png' onclick='changeId(this)' draggable='true' ondragstart='drag(event)' width='100%' id='img" + index.toString() + "'></div>";
+			    newcell.innerHTML = "<div id=" + (++index).toString() + " ondragstart='changeId(this)' ondrop='drop(event)' ondragover='allowDrop(event)'><img src='./images/Hanoi" + (j + 1).toString() + ".png' onclick='changeId(this)' draggable='true' ondragstart='drag(event)' width='100%' id='img" + index.toString() + "'></div>";
 			}
 			else{
 			    newcell.innerHTML = "<div id=" + (++index).toString() + " ondragstart='changeId(this)' ondrop='drop(event)' ondragover='allowDrop(event)' width='100%'></div>";

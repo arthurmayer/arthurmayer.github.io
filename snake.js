@@ -115,6 +115,9 @@ function saveScore(score){
             newHighscore = true;
             localStorage.setItem("HighscoreSnake", score);
         }
+	if(localStrage.getitem("SnakeName") == null{
+	   localStorage.setItem("SnakeName", "Snake");
+    	}
     } else {
         //alert no highscore kept
         alert("Sorry, your browser does not support Web Storage, Highscore will not be saved");
