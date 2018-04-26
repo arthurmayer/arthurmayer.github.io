@@ -1,0 +1,36 @@
+<!-- 
+Dallas Andersen
+Robert Imbler
+Arthur Mayer
+CSCI446 Final Project
+HTML File
+-->
+
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSCI446 Final Project</title>
+  <link rel="stylesheet" href="./final.css">
+ </head>
+ <body>
+
+   <p id="score"></p>
+   <p id="highscore"></p>
+   <button onclick="randomize()">Reset</button>
+   <button onclick="resetHighScore()">Reset HighScore</button>
+   <p/>
+
+   <!-- Table of cells. -->
+
+   <div id="board">
+    <table id="board_table">
+    </table>
+   </div>
+
+   <form action="./snake.html" id="next"/>
+
+ </body>
+<script src="final.js"></script>
+</html>

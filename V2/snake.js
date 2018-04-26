@@ -22,6 +22,7 @@ var apple;
 var muted = false;
 var newHighscore = false;
 var scoreName = "";
+
 window.onkeydown = function(e){
 	if (!gameStart){
 		gameStart = true;
@@ -114,6 +115,9 @@ function saveScore(score){
             newHighscore = true;
             localStorage.setItem("HighscoreSnake", score);
         }
+	if(localStrage.getitem("SnakeName") == null{
+	   localStorage.setItem("SnakeName", "Snake");
+    	}
     } else {
         //alert no highscore kept
         alert("Sorry, your browser does not support Web Storage, Highscore will not be saved");
