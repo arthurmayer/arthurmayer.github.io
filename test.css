@@ -9,6 +9,7 @@ Hanoi CSS file
 canvas{
 	background-color: black;
 }
+
 table, tr {
     padding: 15px;
     table-layout: 'fixed';

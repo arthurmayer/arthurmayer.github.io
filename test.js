@@ -186,7 +186,6 @@ function changeId(img) {
 }
 
 
-
 function createTable() {
     var rowNum = 0;
     var index = 0;
@@ -211,22 +210,6 @@ function createTable() {
 }
 
 createTable();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*
