@@ -106,6 +106,9 @@ function drop(ev) {
             canDrop = false;
         }
     }
+    if (tar.innerHTML != ""){
+	    canDrop = false;
+    }
     if(canDrop ){
         document.getElementById("get").play();
     }
