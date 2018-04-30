@@ -109,7 +109,10 @@ function drop(ev) {
     if (ev.target.tagName == "IMG" || ev.target.innerHTML != "") {
         canDrop = false;
     }
-    if (canDrop) {
+    if (tar.innerHTML != ""){
+	    canDrop = false;
+    }
+    if(canDrop ){
         document.getElementById("get").play();
     }
     if (!canDrop && !isMuted) {
