@@ -21,7 +21,7 @@ var isMuted = false;
 var scoreName = "";
 // BUTTON FUNCTIONS
 function setName() {
-    scoreName = window.prompt("Enter a name for the highscore", "Hanoi").toString();
+    scoreName = window.prompt("Enter a name for the highscore", localStorage.getItem("HanoiName").toString()).toString();
     if (typeof (Storage) != "undefined") {
         localStorage.setItem("HanoiName", scoreName);
     } else {
@@ -156,7 +156,7 @@ function saveScore(score) {
         // Store if score is greater than highscore
         if (score > localStorage.getItem("HighscoreHanoi")) {
             localStorage.setItem("HighscoreHanoi", score);
-            localStorage.setItem("HanoiName", prompt("Please Enter your Name, Winner!", 'Hanoi'));
+            setName();
         }
     } else {
         //alert no highscore kept
@@ -168,11 +168,10 @@ function saveScore(score) {
 }
 //reset highscore
 function resetHighScore() {
-    localStorage.setItem("Highscore", 150);
-    document.getElementById("highscore").innerHTML = "Best Move Count: 0";
-    document.getElementById("scorename").innerHTML = "Scored by: "
     localStorage.setItem("HanoiName", 'Hanoi');
     localStorage.setItem("HighscoreHanoi", 0);
+    document.getElementById("highscore").innerHTML = "Best Move Count: " + localStorage.getItem("HighscoreHanoi").toString();
+    document.getElementById("scorename").innerHTML = "Scored by: " + localStorage.getItem("HanoiName").toString();
 }
 
 
@@ -216,7 +215,19 @@ function createTable() {
     }
 }
 
+function loadData() {
+    if (localStorage.getItem("HanoiName") == "") {
+        localStorage.setItem("HanoiName", "Hanoi");
+    }
+    if (localStorage.getItem("HighscoreHanoi") == "") {
+        localStorage.setItem("HighscoreHanoi", "0");
+    }
+    document.getElementById("highscore").innerHTML = "Best Move Count: " + localStorage.getItem("HighscoreHanoi").toString();
+    document.getElementById("scorename").innerHTML = "Scored by: " + localStorage.getItem("HanoiName").toString();
+}
+
 createTable();
+loadData();
 
 
 
