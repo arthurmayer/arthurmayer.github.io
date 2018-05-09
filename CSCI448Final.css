@@ -1,0 +1,53 @@
+/* Header */
+#pageHeader {
+	text-align: center;
+	background-color: rgba(11, 60, 93, 0.3);
+	padding: 1em 0em;
+}
+
+#pageHeader h3 {
+    font-size: 2em;
+}
+
+/* Body */
+body {
+	background: #328cc1 url("images/background.jpeg") no-repeat fixed;
+	background-size: cover;
+	font-family: system-ui;
+}
+
+section, #pageHeader {
+	text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+	font-size: 1.5em;
+	color: white;
+}
+
+#foreground {
+	background-color: rgba(50, 140, 193, 0.2);
+	height: 100%;
+	overflow: auto;
+}
+
+.screenshots {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.screenshots img {
+	flex: 1;
+	border: 3px inset gray;
+	padding: 1em;
+	align-self: center;
+	max-width: 25em;
+}
+
+.description, .descripTitle {
+    text-align: center;
+    padding: 1em 0.5em;
+}
+
+.description {
+	font-size: 1.25em;
+}
