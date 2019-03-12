@@ -18,34 +18,44 @@
      </div>
     </li>
     <li>
+     <span onclick=toggle("private_data")>Another Site</span>
+     <div class="hidden" id="private_data">
+      <img src="./images/very_insecure.png" style="width:700px"></img>
+     </div>
+    </li>
+    <li>
      <span onclick=toggle("gamelist")>Armor Games</span>
      <div class="hidden" id="gamelist">
       <ul>
        <li>
-        <a href="#">Flash Game</a>
+        <a href="http://armorgames.com/play/28/indestruc2tank" target="_blank">Flash Game</a>
        </li>
        <li>
-        <a href="#">Html Game</a>
+        <a href="https://armorgames.com/one-trick-mage-game/18453" target="_blank">Html Game</a>
        </li>
       </ul>
      </div>
     </li>
     <li>
-     <a href="#">Bandcamp (Add link)</a>
+     <a href="https://bandcamp.com/" target="_blank">Bandcamp</a>
     </li>
     <li>
-     <a href="#">Reverb Nation (Add Link)</a>
+     <a href="https://soundcloud.com/" target="_blank">SoundCloud</a>
     </li>
     <li>
-     <a href="#">SoundCloud</a>
+     <a href="#" target="_blank">Spotify</a>
     </li>
     <li>
-     <a href="#">Spotify?</a>
+     <a href="#" target="_blank">Youtube</a>
     </li>
     <li>
-     <a href="#">Youtube?</a>
+     <a href="../NGGYUNGLYD.html">You will regret clicking this.</a>
     </li>
    </ol>
+  </div>
+  <div id="not-right" class="hidden">
+   <h1 style="color:red">WRONG PASSWORD!!!</h1>
+   <a href="./welcome.html" style="text-decoration:underline;color:green">Try again?</a>
   </div>
  </body>
  <style>
@@ -65,6 +75,9 @@
    var answer = prompt("Enter the password");
    if (btoa(answer) == "aW5zZWN1cmU=") {
     show("content");
+   }
+   else{
+    show("not-right");
    }
   }
   function show(id){
