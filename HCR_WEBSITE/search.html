@@ -31,7 +31,9 @@
            // "url": "{{ site.url | append: page.url | xml_escape }}",
            // "path": "{{ page.url | xml_escape }}"
            // }
-           console.log(data);
+           console.log(data.url);
+           console.log(data.title);
+           console.log(data.content);
           });//{% unless forloop.last %},{% endunless %}
 	}
         //}});
