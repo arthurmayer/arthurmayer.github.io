@@ -22,18 +22,17 @@
       var sites = ["./index.html", "./people.html", "./outreach.html", "./publications.html", "./media.html"];
 
       //window.pages = {
-      //require(['fs'], function(fs){
         for (const site of sites){
-          getHTML(site, function(data){
-          //"{{ page.url | slugify }}": {
-           // "title": "{{ page.title | xml_escape }}",
-           // "content": {{ page.content | markdownify | strip_newlines | strip_html | jsonify }},
-           // "url": "{{ site.url | append: page.url | xml_escape }}",
-           // "path": "{{ page.url | xml_escape }}"
-           // }
-           console.log(data.url);
-           console.log(data.title);
-           console.log(data.content);
+          getHTML(site, function(page){
+          console.log({"{{ site }}": {
+            "title": "{{ page.title | xml_escape }}",
+            "content": {{ page.documentElement | markdownify | strip_newlines | strip_html | jsonify }},
+            "url": "{{ window.location.hostname | append: page.URL | xml_escape }}",
+            "path": "{{ page.URL | xml_escape }}"
+            });
+           //console.log(data.URL);
+           //console.log(data.title);
+           //console.log(data.documentElement);
           });//{% unless forloop.last %},{% endunless %}
 	}
         //}});
