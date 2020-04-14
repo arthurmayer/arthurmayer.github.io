@@ -21,14 +21,14 @@
 
       var sites = ["./index.html", "./people.html", "./outreach.html", "./publications.html", "./media.html"];
 
-      window.pages = {}
+      window.pages = {};
         for (const site of sites){
           getHTML(site, function(page){
-          console.log({"{{ site }}": {
-            "title": "{{ page.title | xml_escape }}",
-            "content": "{{ page.documentElement | markdownify | strip_newlines | strip_html | jsonify }}",
-            "url": "{{ window.location.hostname | append: page.URL | xml_escape }}",
-            "path": "{{ page.URL | xml_escape }}"
+          console.log({site: {
+            "title": page.title,
+            "content": page.getElementById("main_content").replace(/(<([^>]+)>)/ig,"").replace(/(\n)/ig,"");
+            "url": window.location.hostname+page.URL,
+            "path": page.URL
             }});
            //console.log(data.URL);
            //console.log(data.title);
