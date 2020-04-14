@@ -26,7 +26,7 @@
           getHTML(site, function(page){
           console.log({site: {
             "title": page.title,
-            "content": page.getElementById("main_content").replace(/(<([^>]+)>)/ig,"").replace(/(\n)/ig,""),
+            "content": page.getElementById("main_content").innerHTML.replace(/(<([^>]+)>)/ig,"").replace(/(\n)/ig,""),
             "url": window.location.hostname+page.URL,
             "path": page.URL
             }});
