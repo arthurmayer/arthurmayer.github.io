@@ -1,8 +1,41 @@
+var getHTML = function ( url, callback ) {
+    // Feature detection
+    if ( !window.XMLHttpRequest ) return;
+    // Create new request
+    var xhr = new XMLHttpRequest();
+    // Setup callback
+    xhr.onload = function() {
+        if ( callback && typeof( callback ) === 'function' ) {
+            callback( this.responseXML );
+        }
+    }
+    // Get the HTML
+    xhr.open( 'GET', url );
+    xhr.responseType = 'document';
+    xhr.send();
+};
+
+var sites = ["./index.html", "./people.html", "./outreach.html", "./publications.html", "./media.html"];
+
+var pagejson = {};
+for (const site of sites){
+    getHTML(site, function(page){
+        pagejson[site] = {
+            "title": page.title,
+            "content": page.getElementById("main_content").innerHTML.replace(/(<([^>]+)>)/ig,"").replace(/(\n)/ig,""),
+            "url": page.URL,
+            "path": site
+            };
+    });
+    console.log(pagejson);
+}
+
+
 var searchIndex = lunr(function() {
     this.ref("id");
     this.field("title", { boost: 10 });
     this.field("content");
-    for (var key in window.pages) {
+    for (var key in pagejson) {
         this.add({
             "id": key,
             "title": pages[key].title,
