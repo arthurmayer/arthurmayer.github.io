@@ -21,20 +21,22 @@
 
       var sites = ["./index.html", "./people.html", "./outreach.html", "./publications.html", "./media.html"];
 
-      var window.pages = {};
-	console.log(window.pages);
+      var pagejson = {};
         for (const site of sites){
           getHTML(site, function(page){
-          window.pages[site] = {
+          pagejson[site] = {
             "title": page.title,
             "content": page.getElementById("main_content").innerHTML.replace(/(<([^>]+)>)/ig,"").replace(/(\n)/ig,""),
             "url": page.URL,
             "path": site
             };
           });
-	console.log(window.pages);
+	console.log(pagejson);
 	}
-        
+	console.log("PAGE");
+	console.log(pagejson);
+        window.pages = pagejson;
+	console.log("PAGE2");
 	console.log(window.pages);
 
       /*window.pages = {
