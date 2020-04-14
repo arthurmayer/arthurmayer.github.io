@@ -24,12 +24,12 @@
       window.pages = {};
         for (const site of sites){
           getHTML(site, function(page){
-          console.log({site: {
+          window.pages[site] = {
             "title": page.title,
             "content": page.getElementById("main_content").innerHTML.replace(/(<([^>]+)>)/ig,"").replace(/(\n)/ig,""),
             "url": page.URL,
-            "path": page.URL.substring(page.URL.indexOf(window.location.hostname)+window.location.hostname.length)
-            }});
+            "path": site
+            };
            //console.log(data.URL);
            //console.log(data.title);
            //console.log(data.documentElement);
