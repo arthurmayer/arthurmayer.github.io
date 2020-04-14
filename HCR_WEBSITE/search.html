@@ -2,7 +2,7 @@
 <html>
   <head>
     <script>
-      /*var getHTML = function ( url, callback ) {
+      var getHTML = function ( url, callback ) {
         // Feature detection
         if ( !window.XMLHttpRequest ) return;
         // Create new request
@@ -22,9 +22,9 @@
       var sites = ["./index.html", "./people.html", "./outreach.html", "./publications.html", "./media.html"];
 
       //window.pages = {
-      require(['fs'], function(fs){
+      //require(['fs'], function(fs){
         for (const site of sites){
-          fs.readFile(site, function(data){
+          getHTML(site, function(data){
           //"{{ page.url | slugify }}": {
            // "title": "{{ page.title | xml_escape }}",
            // "content": {{ page.content | markdownify | strip_newlines | strip_html | jsonify }},
@@ -33,11 +33,12 @@
            // }
            console.log(data);
           });//{% unless forloop.last %},{% endunless %}
-        }});
-      //};*/ //TODO - Dynamically generate the window.pages object
+	}
+        //}});
+      //}; //TODO - Dynamically generate the window.pages object
 
 
-      window.pages = {
+      /*window.pages = {
         "index.html" : {
           "title" : "index",
           "content" : "Human-Centered Robotics Lab @ Mines Human-Centered Robotics Lab Lifelong collaborative autonomy, robot adaptation, multisensory perception, and human-robot/swarm teaming Home People Research Outreach Publications Media Contact About The Human-Centered Robotics Lab is directed by Dr. Hao Zhang and is dedicated to innovative research onlifelong collaborative autonomy, with the goal of enabling robots to collaborate with humans, assist people, take over tasks where our current society has shortcomings, and operate over long periods of time (e.g., across days, seasons, and eventually over their lifetimes). Our research lies at the intersection of robotics, artificial intelligence, and augmented and mixed reality, with specific research topics focusing on robot adaptation and learning, multisensory perception, and human-robot/swarm teaming in dynamic, unstructured, open, and potentially adversarial environments. Our work iscomputational, in that we develop innovative algorithms, approaches, and software architectures that have provable properties to enable lifelong collaborative autonomy. We focus on both theoretical and applied research that leads to fundamentally new concepts and systems that can be demonstrated on real robots in lifelong collaborative autonomy applications, including robot-assisted inspection and repair, environment exploration and monitoring, autonomous driving, search and rescue, Internet of Robotic Things (IoRT), among others where robots are a critical component or a promising solution. We are looking for highly self-motivated students who are interested in robotics, artificial intelligence, and augmented reality. If you are interested in my research and would like to join my research group, please send me an email with your CV, transcripts and publications. News [TODO] Contact Dr. Hao Zhang Dept. of Computer Science Colorado School of Mines 1610 Illinois Street Golden, CO 80401 Lab: Brown Hall BBW 325 Office: Brown Hall 250 Email: hzhang@mines.edu Phone: (303) 273-3581 Fax: (303) 273-3602 HCRobotics Lab |Department of Computer Science |Colorado School of Mines",
@@ -80,7 +81,7 @@
           "url" : "research.html",
           "path" : "research.html"
         }
-      };
+      };*/
     </script>
     <script src="js/lunr-2.3.5.min.js"></script>
   </head>
