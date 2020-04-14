@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Human-Centered Robotics Lab @ Mines</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/csm.jpg">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="js/toggle.js"></script>
+  <script src="js/mergeSort.js"></script>
+</head>
+<body>
+  <header>
+    <div id="logo">
+      <div id="logo_text">
+        <h1><a href="index.html"><strong>Human-Centered Robotics Lab</strong></a></h1>
+        <h4>Lifelong collaborative autonomy, robot adaptation, multisensory perception, and human-robot/swarm teaming</h2>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-sm navbar-light sticky-top">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="people.html">People</a></li>
+        <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+        <li class="nav-item"><a class="nav-link" href="outreach.html">Outreach</a></li>
+        <li class="nav-item active"><a class="nav-link" href="publications.html">Publications</a></li>
+        <li class="nav-item"><a class="nav-link" href="media.html">Media</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="content">
+      <h2>Publications</h2>
+      <a class="toggle_link" href="javascript:toggle('data-time', false)">Sort by year</a> |
+      <a class="toggle_link" href="javascript:toggle('data-topic', false)">Sort by topic</a> |
+      <a class="toggle_link" href="javascript:toggle('data-venue', false)">Sort by venue</a> |
+      <a class="toggle_link" href="javascript:toggle('data-type', false)">Sort by priority</a>
+      <div class="anchors"></div>
+      <div class="publications"></div>
+
+      <div id="publicationdatabase" style="display: none;">
+         <ul>
+         
+         <li class="publication" data-time="20200516" data-venue="ICRA" data-topic="Human-Robot Teaming" data-type="Workshops">
+               <a href=""  target="blank">
+               Representing multi-robot structure through multimodal graph embedding for the selection of robot teams
+                </a><br />		
+               Brian Reily, Christopher Reardon, and Hao Zhang
+                  <br /><em>
+               IEEE International Conference on Robotics and Automation
+               </em>
+               (ICRA), 2020.
+         </li>
+         
+
+         <li class="publication" data-time="20200516" data-venue="ICRA" data-topic=" Long-Term Representation Learning" data-type="Workshops">
+               <a href=""  target="blank">
+              Long-term place recognition through worst-case graph matching to integrate landmark appearances and spatial relationships
+                </a><br />		
+               Peng Gao and Hao Zhang
+                  <br /><em>
+               IEEE International Conference on Robotics and Automation
+               </em>
+               (ICRA), 2020.
+         </li>
+         
+         <li class="publication" data-time="20200516" data-venue="ICRA" data-topic="Agent Modeling of Humans" data-type="Workshops">
+               <a href=""  target="blank">
+               Simultaneous learning from human pose and object cues for real-time activity recognition
+                </a><br />		
+               Brian Reily, Qingzhao Zhu, Christopher Reardon, and Hao Zhang
+                  <br /><em>
+               IEEE International Conference on Robotics and Automation
+               </em>
+               (ICRA), 2020.
+         </li>
+
+         <li class="publication" data-time="20200516" data-venue="ICRA" data-topic="Collaborative Perception" data-type="Workshops">
+               <a href=""  target="blank">
+               Correspondence identification in collaborative robot perception through maximin hypergraph matching
+                </a><br />		
+               Peng Gao, Ziling Zhang, Rui Guo, Hongsheng Lu, and Hao Zhang
+                  <br /><em>
+               IEEE International Conference on Robotics and Automation
+               </em>
+               (ICRA), 2020.
+         </li>
+         
+         <li class="publication" data-time="20200315" data-venue="IJRR" data-topic="Robot Adaptation" data-type="Journals">
+               <a href="" target="blank">
+                Robot perceptual adaptation to environment changes for long-term human teammate following
+                </a><br />		
+              Sriram Siva and Hao Zhang
+               <br /><em>
+              International Journal of Robotics Research
+               </em>
+              (IJRR), in press, 2020.
+         </li>
+
+         
+         <li class="publication" data-time="20200127" data-venue="AAAI" data-topic="Long-Term Representation Learning" data-type="Conferences">
+               <a href="" target="blank">
+               Long-term loop closure detection through visual-spatial information preserving multi-order graph matching
+                </a><br />		
+               Peng Gao and Hao Zhang
+               <br /><em>
+               AAAI Conference on Artificial Intelligence
+               </em>
+               (AAAI), 2020.
+         </li>
+
+
+         <li class="publication" data-time="20190805" data-venue="RSS" data-topic="Robot Adaptation" data-type="Conferences">
+               <a href="http://www.roboticsproceedings.org/rss15/p30.pdf" target="blank">
+              Robot adaptation to unstructured terrains by joint representation and apprenticeship learning
+                </a><br />		
+               Sriram Siva, Maggie Wigness, John Rogers, and Hao Zhang
+               <br /><em>
+               Robotics Science and Systems
+               </em>
+               (RSS), 2019.
+         </li>
+
+
+         <li class="publication" data-time="20190802" data-venue="RAM" data-topic="Human-Robot Teaming" data-type="Journals">
+               <a href="https://ieeexplore.ieee.org/document/8491368">
+                Robots can teach students with intellectual disabilities: Educational benefits of using robotic and augmented reality applications
+                </a><br />		
+              Christopher Reardon, Hao Zhang, Rachel Wright, and Lynne Parker
+               <br /><em>
+              IEEE Robotics & Automation Magazine
+               </em> (RAM),
+              vol.26, no.2, pp.79-93, 2019.
+         </li>
+         
+         <li class="publication" data-time="20190801" data-venue="JCB" data-topic="Interdisciplinary Research" data-type="Journals">
+               <a href="https://link.springer.com/chapter/10.1007/978-3-030-17083-7_4">
+                Learning robust multi-label sample specific distances for identifying HIV-1 drug resistance
+                </a><br />		
+              Lodewijk Brand, Xue Yang, Kai Liu, Saad Elbeleidy, Hua Wang, Hao Zhang, and Feiping Nie
+               <br /><em>
+              Journal of Computational Biology,
+               </em>
+              in press, 2019.
+         </li>
+
+         <li class="publication" data-time="20190801" data-venue="VTC" data-topic="Collaborative Perception" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/abstract/document/8891157" target="blank">
+              Collaborative localization for occluded objects in connected vehicular platform
+                </a><br />		
+                 Rui Guo, Hongsheng Lu, Peng Gao, Ziling Zhang, and Hao Zhang
+               <br /><em>
+              IEEE Vehicular Technology Conference
+               </em>
+               (VTC), 2019.
+         </li>
+
+
+         <li class="publication" data-time="20190726" data-venue="VAMR" data-topic="Augmented Reality" data-type="Conferences">
+               <a href="https://link.springer.com/chapter/10.1007/978-3-030-21565-1_4" target="blank">
+              Scalable representation learning for long-term augmented reality-based information delivery in collaborative human-robot perception
+                </a><br />		
+                Fei Han, Sriram Siva, and Hao Zhang
+               <br /><em>
+              International Conference on Virtual, Augmented and Mixed Reality
+               </em>
+               (VAMR), invited paper, 2019.
+         </li>
+
+
+         <li class="publication" data-time="20190505" data-venue="RECOMB" data-topic="Interdisciplinary Research" data-type="Conferences">
+               <a href="https://link.springer.com/chapter/10.1007/978-3-030-17083-7_4" target="blank">
+               Learning robust multi-label sample specific distances for identifying HIV-1 drug resistance
+                </a><br />		
+               Lodewijk Brand, Xue Yang, Liu Kai, Saad Elbeleidy, Hua Wang, and Hao Zhang
+               <br /><em>
+              International Conference on Research in Computational Molecular Biology
+               </em>
+               (RECOMB), 2019.
+         </li>
+
+         <li class="publication" data-time="20190108" data-venue="WACV" data-topic="Multisensory Perception" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/document/8658410" target="blank">
+               A comparative analysis of visual-inertial SLAM for assisted wayfinding of the visually impaired
+                </a><br />		
+               He Zhang, Lingqiu Jin, Hao Zhang, and Cang Ye
+               <br /><em>
+               IEEE Winter Conference on Applications of Computer Vision
+               </em>
+               (WACV), 2019.
+         </li>
+
+
+         <li class="publication" data-time="20190127" data-venue="AAAI" data-topic="Long-Term Representation Learning" data-type="Conferences">
+               <a href="https://aaai.org/ojs/index.php/AAAI/article/view/4805" target="blank">
+               Visual place recognition via robust l2-norm distance based holism and landmark integration
+                </a><br />		
+               Kai Liu, Hua Wang, Fei Han, and Hao Zhang
+               <br /><em>
+               AAAI Conference on Artificial Intelligence
+               </em>
+               (AAAI), 2019.
+         </li>
+
+
+
+         <li class="publication" data-time="20180801" data-venue="Neurorobotics" data-topic="Human-Robot Teaming" data-type="Journals">
+               <a href="https://www.frontiersin.org/articles/10.3389/fnbot.2018.00054/abstract" target="blank">
+                Shaping of shared autonomous solutions with minimal interaction
+                </a><br />		
+              Christopher Reardon, Hao Zhang, and Jonathan Fink
+               <br /><em>
+              Frontiers in Neurorobotics,
+               </em>
+              vol.12, no.54, 2018.
+         </li>
+
+         <li class="publication" data-time="20180501" data-venue="RA-L" data-topic="Long-Term Representation Learning" data-type="Journals">
+               <a href="https://ieeexplore.ieee.org/document/8411104/" target="blank">
+                Learning of holism-landmark graph embedding for place recognition in long-term autonomy
+                </a><br />		
+               Fei Han, Saad Elbeleidy, Hua Wang, Cang Ye, and Hao Zhang
+               <br /><em>
+              IEEE Robotics and Automation Letters
+               </em>
+               (RA-L), vol.3, no.4, pp.3669-3676, 2018.
+         </li>
+
+
+         <li class="publication" data-time="20180202" data-venue="AAAI" data-topic="Long-Term Representation Learning" data-type="Conferences">
+               <a href="https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/view/16617" target="blank">
+               Learning of integrated holism-landmark representations for long-term loop closure detection
+                </a><br />		
+               Fei Han, Hua Wang, and Hao Zhang
+               <br /><em>
+               AAAI Conference on Artificial Intelligence
+               </em>
+               (AAAI), 2018.
+         </li>
+
+
+         <li class="publication" data-time="20180618" data-venue="CVPR" data-topic="Long-Term Representation Learning" data-type="Conferences">
+               <a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Liu_Learning_Multi-Instance_Enriched_CVPR_2018_paper.pdf" target="blank">
+                Learning multi-instance enriched image representation via non-greedy simultaneous l1-norm minimization and maximization
+                </a><br />		
+               Kai Liu, Hua Wang, Feiping Nie, and Hao Zhang
+               <br /><em>
+               IEEE Conference on Computer Vision and Pattern Recognition
+               </em>
+               (CVPR), 2018.
+         </li>
+
+          <li class="publication" data-time="20171010" data-venue="IROS" data-topic="Agent Modeling of Humans" data-type="Conferences">
+                <a href="">
+                Robot understanding of human intents in gesture-based interaction
+              </a><br />		
+               Fei Han, Christopher Reardon, Cang Ye, and Hao Zhang
+               <br /><em>
+               Workshop of IEEE/RSJ International Conference on Intelligent Robots and Systems
+               </em>
+               (IROS), 2017.
+         </li>
+
+
+
+         <li class="publication" data-time="20180630" data-venue="RSS" data-topic="Robot Adaptation" data-type="Workshops">
+               <a href="http://hcr.mines.edu/2018-rss-workshop/"  target="blank">
+               Metacognitive reasoning of perceptual inconsistency for illusion detection
+                </a><br />		
+               Sriram Siva and Hao Zhang
+               <br /><em>
+                Workshops on Adversarial Robotics</em> at RSS, 2018.
+         </li>
+
+         <li class="publication" data-time="20180516" data-venue="ICRA" data-topic="Robot Adaptation" data-type="Workshops">
+               <a href="https://manihsieh.com/icra-2018-workshop-program"  target="blank">
+               Robot adaptation to environment changes in long-term autonomy
+                </a><br />		
+               Sriram Siva and Hao Zhang
+               <br /><em>
+                Workshops on Robot Teammates Operating in Dynamic, Unstructured Environments</em> (RT-DUNE) at ICRA, 2018.
+         </li>
+
+
+         <li class="publication" data-time="20180516" data-venue="ICRA" data-topic="Human-Robot Teaming" data-type="Workshops">
+               <a href="https://manihsieh.com/icra-2018-workshop-program"  target="blank">
+               Team intent understanding through latent representation learning for underground search and rescue
+                </a><br />		
+               Fei Han and Hao Zhang
+               <br /><em>
+                Workshops on Robot Teammates Operating in Dynamic, Unstructured Environments</em> (RT-DUNE) at ICRA, 2018.
+         </li>
+
+
+         <li class="publication" data-time="20180515" data-venue="ICRA" data-topic="Long-Term Representation Learning" data-type="Conferences">
+               <a href="">
+               Omnidirectional multisensory perception fusion for long-term place recognition
+                </a><br />		
+               Sriram Siva and Hao Zhang
+               <br /><em>
+               IEEE International Conference on Robotics and Automation
+               </em>
+               (ICRA), 2018.
+         </li>
+
+
+        <li class="publication" data-time="20170711" data-venue="SSRR" data-topic="Human-Robot Teaming" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/document/8088165/"  target="blank">
+                Optimizing autonomous surveillance route solutions from minimal human-robot interaction
+                </a><br />		
+               Christopher Reardon,  Fei Han,  Hao Zhang, and  Jonathan Fink
+               <br /><em>
+               IEEE International Symposium on Safety, Security, and Rescue Robotics
+               </em>
+               (SSRR), 2017.
+         </li>
+
+         <li class="publication" data-time="20171013" data-venue="ISMAR" data-topic="Augmented Reality" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/document/8088449/" target="blank">
+                Planning-based workflow modeling for AR-enabled automated task guidance
+                </a><br />		
+               Fei Han, Jiayi Liu, William Hoff, and Hao Zhang
+               <br /><em>
+               International Symposium on Mixed and Augmented Reality
+               </em>
+               (ISMAR), Poster Paper, 2017.
+         </li>
+
+         <li class="publication" data-time="20180101" data-venue="AuRo" data-topic="Agent Modeling of Humans" data-type="Journals">
+               <a href="https://link.springer.com/article/10.1007/s10514-017-9692-3" target="blank">
+                Skeleton-based bio-inspired human activity prediction for real-time human-robot interaction
+                </a><br />		
+              Brian Reily, Fei Han, Lynne E. Parker, and Hao Zhang
+               <br /><em>
+              Autonomous Robots
+               </em>
+               (AuRo),  vol.42, no.6, pp 1281-1298, 2018.
+         </li>
+         
+         <li class="publication" data-time="20180501" data-venue="AuRo" data-topic="Long-Term Representation Learning" data-type="Journals">
+               <a href="https://link.springer.com/article/10.1007/s10514-018-9736-3" target="blank">
+                Sequence-based sparse optimization methods for long-term loop closure detection in visual SLAM
+                </a><br />		
+              Fei Han, Hua Wang, Guoquan Huang, and Hao Zhang
+               <br /><em>
+              Autonomous Robots
+               </em>
+               (AuRo), vol.42, no.7, pp.1323-1335, 2018.
+         </li>
+
+         <li class="publication" data-time="20170115" data-venue="ICRA" data-topic="Decision Making and Planning" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/document/7989301/" target="blank">
+                Sequence-based multimodal apprenticeship learning for robot perception and decision making
+                </a><br />		
+               Fei Han, Xue Yang, Yu Zhang, and Hao Zhang
+               <br /><em>
+               IEEE International Conference on Robotics and Automation
+               </em>
+               (ICRA), 2017.
+         </li>
+
+         <li class="publication" data-time="20170115" data-venue="ICRA" data-topic="Multisensory Perception" data-type="Conferences">
+               <a href="https://arxiv.org/pdf/1702.07474.pdf" target="blank">
+               Simultaneous feature and body-part learning for real-time robot awareness of human behaviors
+                </a><br />		
+               Fei Han, Xue Yang, Christopher Reardon, Yu Zhang, and Hao Zhang
+               <br /><em>
+               IEEE International Conference on Robotics and Automation
+               </em>
+               (ICRA), 2017.
+         </li>
+
+         <li class="publication" data-time="20170115" data-venue="ICRA" data-topic="Agent Modeling of Humans" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/document/7989302/" target="blank">
+               Minimum uncertainty latent variable models for robot recognition of sequential human activities
+                </a><br />		
+               Fei Han, Christopher M. Reardon, Lynne Parker, Hao Zhang
+               <br /><em>
+               IEEE International Conference on Robotics and Automation
+               </em>
+               (ICRA), 2017.
+         </li>
+
+          <li class="publication" data-time="20170110" data-venue="RA-L" data-topic="Long-Term Representation Learning" data-type="Journals">
+               <a href="https://ieeexplore.ieee.org/document/7839213/" target="blank">
+                SRAL: Shared representative appearance learning for long-term visual place recognition
+                </a><br />		
+               Fei Han, Xue Yang, Yiming Deng, Mark Rentschler, Dejun Yang, and Hao Zhang
+               <br /><em>
+              IEEE Robotics and Automation Letters
+               </em>
+               (RA-L), vol.26, no.3, pp.1172-1179, 2017.
+         </li>
+
+         <li class="publication" data-time="20170109" data-venue="CVIU" data-topic="Agent Modeling of Humans" data-type="Journals">
+               <a href="https://www.sciencedirect.com/science/article/pii/S1077314217300279" target="blank">
+                Space-time representation of people based on 3d skeletal data: A review
+                </a><br />		
+               Fei Han, Brian Reily, William Hoff, and Hao Zhang
+               <br /><em>
+              Computer Vision and Image Understanding
+               </em>
+               (CVIU), vol.158, pp.85-105, 2017.
+         </li>
+
+          <li class="publication" data-time="20170101" data-venue="CVIU" data-topic="Agent Modeling of Humans" data-type="Journals">
+               <a href="https://www.sciencedirect.com/science/article/pii/S1077314216301953" target="blank">
+                Real-time gymnast detection and performance analysis with a portable 3D camera
+                </a><br />		
+               Brian Reily, Hao Zhang, and William Hoff
+               <br /><em>
+              Computer Vision and Image Understanding
+               </em>
+               (CVIU), vol.159, pp.154-163,, 2017.
+         </li>
+
+          <li class="publication" data-time="20161018" data-venue="ATS" data-topic="Multisensory Perception" data-type="Workshops">
+               <a href="">
+                Data-driven fault detection via sparse multisensory learning
+                </a><br />		
+               Fei Han, Christopher Dreyer, Thomas Jones, Rob Kelso, James Thomas, and Hao Zhang
+               <br /><em>
+              AIAA Annual Technical Symposium
+               </em>
+               (ATS), 2016.
+         </li>
+
+
+         <li class="publication" data-time="20160919" data-venue="ISMAR" data-topic="Augmented Reality" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/document/7836514/" target="blank">
+                Learning object and state models for AR task guidance
+                </a><br />		
+               William Hoff and Hao Zhang
+               <br /><em>
+               International Symposium on Mixed and Augmented Reality
+               </em>
+               (ISMAR), Poster Paper, 2016.
+         </li>
+
+         <li class="publication" data-time="20160831" data-venue="RO-MAN" data-topic="Robot Adaptation" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/document/7745095/" target="blank">
+                A unified representation for robot learning of action labels and motion trajectories from internet 3D human skeletal data
+                </a><br />		
+               Chi Zhang, Hao Zhang, Rui Guo, and Lynne E. Parker
+               <br /><em>
+               IEEE International Symposium on Robot and Human Interactive Communication
+               </em>
+               (RO-MAN), 2016.
+         </li>
+
+         <li class="publication" data-time="20160630" data-venue="RSS" data-topic="Long-Term Representation Learning" data-type="Workshops">
+               <a href="">
+                Life-long place recognition by shared representative appearance learning
+                </a><br />		
+               Fei Han, Xue Yang, Yiming Deng, Mark Rentschler, Dejun Yang, and Hao Zhang
+               <br /><em>
+               Workshops in conjunction with Robotics: Science and Systems
+               </em>
+               (RSS), 2016.
+         </li>
+
+         <li class="publication" data-time="20160630" data-venue="RSS" data-topic="Long-Term Representation Learning" data-type="Conferences">
+               <a href="http://www.roboticsproceedings.org/rss12/p43.pdf" target="blank">
+                Robust multimodal sequence-based loop closure detection via structured sparsity
+                </a><br />		
+               Hao Zhang, Fei Han, and Hua Wang
+               <br /><em>
+               Robotics: Science and Systems
+               </em>
+               (RSS), 2016.
+               <br>
+			   <!-- WC moved font to red class in style.css -->
+			   <!-- WC bold replaced with strong -->
+               <p class="red"><strong> Best Paper Finalist. </strong></p>
+         </li>
+
+         <li class="publication" data-time="20160802" data-venue="IJCAI" data-topic="Robot Adaptation" data-type="Conferences">
+               <a href="https://www.ijcai.org/Proceedings/16/Papers/497.pdf" target="blank">
+                Enforcing template representability and temporal consistency for adaptive sparse tracking
+                </a><br />		
+               Xue Yang, Fei Han, and Hao Zhang
+               <br /><em>
+               International Joint Conference on Artificial Intelligence
+               </em>
+               (IJCAI), 2016.
+         </li>
+
+         <li class="publication" data-time="20160530" data-venue="ICRA" data-topic="Decision Making and Planning" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/document/7487503/" target="blank">
+                SRAC: Self-reflective risk-aware artificial cognitive models for robot response to human activities
+                </a><br />		
+               Hao Zhang, Christopher Reardon, Fei Han, and Lynne E. Parker
+               <br /><em>
+               IEEE International Conference on Robotics and Automation
+               </em>
+               (ICRA), 2016.
+         </li>
+
+         <li class="publication" data-time="20160212" data-venue="AAAI" data-topic="Multisensory Perception" data-type="Conferences">
+               <a href="https://www.aaai.org/ocs/index.php/AAAI/AAAI16/paper/view/12322" target="blank">
+                Drosophila gene expression pattern annotations via multi-instance biological relevance learning
+                </a><br />		
+               Hua Wang, Cheng Deng, Hao Zhang, Xinbo Gao, and Heng Huang
+               <br /><em>
+               AAAI Conference on Artificial Intelligence
+               </em>
+               (AAAI), 2016.
+         </li>
+
+         <li class="publication" data-time="20160301" data-venue="TCSVT" data-topic="Agent Modeling of Humans" data-type="Journals">
+               <a href="https://ieeexplore.ieee.org/document/6967831/" target="blank">
+               CoDe4D: color-depth local spatio-temporal features for human activity recognition from RGB-D videos
+                </a><br />		
+                Hao Zhang and Lynne E. Parker
+               <br /><em>
+                IEEE Transactions on Circuits and Systems for Video Technology
+               </em>
+               (TCSVT), vol.26, no.3, pp.541-555, 2016.
+         </li>
+
+         <li class="publication" data-time="20150928" data-venue="IROS" data-topic="Robot Adaptation" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/document/7353410/" target="blank">
+                Feature space decomposition for effective robot adaptation
+                </a><br />		
+               Chi Zhang, Hao Zhang and Lynne E. Parker
+               <br /><em>
+               IEEE International Conference on Intelligent Robots and Systems
+               </em>
+               (IROS), 2015.
+         </li>
+
+         <li class="publication" data-time="20150530" data-venue="ICRA" data-topic="Agent Modeling of Humans" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/document/7139618/" target="blank">
+                Bio-inspired predictive orientation decomposition of skeleton trajectories for real-time human activity prediction
+                </a><br />		
+               Hao Zhang and Lynne E. Parker
+               <br /><em>
+               IEEE International Conference on Robotics and Automation
+               </em>
+               (ICRA), 2015.
+         </li>
+
+         <li class="publication" data-time="20150530" data-venue="ICRA" data-topic="Human-Robot Teaming" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/document/7139459/" target="blank">
+                Adaptive human-centered representation for activity recognition of multiple individuals from 3D point cloud sequences
+                </a><br />		
+               Hao Zhang,  Christopher Reardon, Chi Zhang, and Lynne E. Parker
+               <br /><em>
+               IEEE International Conference on Robotics and Automation
+               </em>
+               (ICRA), 2015.
+         </li>
+
+         <li class="publication" data-time="20150831" data-venue="RO-MAN" data-topic="Human-Robot Teaming" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/document/7333651/" target="blank">
+                Response prompting for intelligent robot instruction of students with intellectual disabilities
+                </a><br />		
+               Christopher Reardon, Hao Zhang,  Rachel Wright, and Lynne E. Parker
+               <br /><em>
+               IEEE International Symposium on Robot and Human Interactive Communication
+               </em>
+               (RO-MAN), 2015.
+               <br />
+			   <!-- WC moved font to red class in style.css -->
+			   <!-- WC bold replaced with strong -->
+               <p class="red"><strong> Finalist of RSJ/KROS Distinguished Interdisciplinary Research Award.</strong></p>
+         </li>
+
+         <li class="publication" data-time="20150530" data-venue="ICRA" data-topic="Robot Adaptation" data-type="Workshops">
+               <a href="">
+                Feature space decomposition for autonomous robot adaptation in programming by demonstration
+                </a><br />		
+               Chi Zhang, Hao Zhang, and Lynne E. Parker
+               <br />
+               Workshops in conjunction with
+               <em>
+               IEEE International Conference on Robotics and Automation
+               </em>
+               (ICRA), 2015.
+         </li>	
+
+         <li class="publication" data-time="20151001" data-venue="THMS" data-topic="Agent Modeling of Humans" data-type="Journals">
+               <a href="https://ieeexplore.ieee.org/document/7145447/" target="blank">
+               Fuzzy temporal segmentation and probabilistic recognition of continuous human daily activities
+                </a><br />		
+                Hao Zhang, Wenjun Zhou, and Lynne E. Parker
+               <br /><em>
+                IEEE Transactions on Human-Machine Systems
+               </em>
+               (THMS), vol.45, no.5, pp.598-611, 2015.
+         </li>
+
+        <li class="publication" data-time="20150501" data-venue="WWW" data-topic="Interdisciplinary Research" data-type="Journals">
+               <a href="https://link.springer.com/article/10.1007/s11280-013-0265-x" target="blank">
+               Correlation range query for effective recommendations
+                </a><br />		
+                Wenjun Zhou and Hao Zhang
+               <br /><em>
+                World Wide Web
+               </em>
+               (WWW), vol. 18, no. 3, pp 709-729, 2015.
+<!--         Impact Factor: 1.539.-->
+         </li>	
+
+         <li class="publication" data-time="20140720" data-venue="CVPR" data-topic="Agent Modeling of Humans" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/document/6909662/" target="blank">
+                Simplex-based 3D spatio-temporal feature description for action recognition
+                </a><br />		
+               Hao Zhang,  Wenjun Zhou, Christopher Reardon, and Lynne E. Parker
+               <br /><em>
+               IEEE Conference on Computer Vision and Pattern Recognition
+               </em>
+               (CVPR), 2014.
+         </li>
+
+
+         <li class="publication" data-time="20151018" data-venue="SSRR" data-topic="Long-Term Representation Learning" data-type="Workshops">
+               <a href="">
+               CORE: A dataset of critical objects for response to emergency
+               </a><br />		
+               Ahmed A. Ambarak, John Steele, and Hao Zhang
+               <br /><em>IEEE International Symposium on Safety, Security, and Rescue Robotics</em> (SSRR), Late Breaking Report, 2015.
+         </li>	
+
+         <li class="publication" data-time="20140520" data-venue="ICRA" data-topic="Agent Modeling of Humans" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/document/6907789/" target="blank">
+                Fuzzy segmentation and recognition of continuous human activities
+                </a><br />		
+               Hao Zhang,  Wenjun Zhou, and Lynne E. Parker
+               <br /><em>
+               IEEE International Conference on Robotics and Automation
+               </em>
+               (ICRA), 2014.
+         </li>	
+
+         <li class="publication" data-time="20131201" data-venue="ICMLA" data-topic="Interdisciplinary Research" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/document/6784605/" target="blank">
+                Zebrafish larva locomotor activity analysis using machine learning techniques
+                </a><br />		
+               Hao Zhang,  Scott C. Lenaghan, Michelle H. Connolly, and Lynne E. Parker
+               <br /><em>
+               IEEE International Conference on Machine Learning and Applications
+               </em>
+               (ICMLA), 2013.
+         </li>	
+
+         <li class="publication" data-time="20131201" data-venue="ICMLA" data-topic="Interdisciplinary Research" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/document/6784588/" target="blank">
+                Approximate l-fold cross-validation with least squares SVM and kernel ridge regression
+                </a><br />		
+               Richard Edwards, Hao Zhang, and Lynne E. Parker
+               <br /><em>
+               IEEE International Conference on Machine Learning and Applications
+               </em>
+               (ICMLA), 2013.
+         </li>	
+
+         <li class="publication" data-time="20130701" data-venue="WAIM" data-topic="Interdisciplinary Research" data-type="Conferences">
+               <a href="https://link.springer.com/chapter/10.1007/978-3-642-38562-9_50" target="blank">
+                Correlation range query
+                </a><br />		
+               Wenjun Zhou and Hao Zhang
+               <br /><em>
+               International Conference on Web-Age Information Management
+               </em>
+               (WAIM), 2013.
+               <br />
+			   <!-- WC moved font to red class in style.css -->
+			   <!-- WC bold replaced with strong -->
+               <p class="red"><strong> Best Paper Award. </strong></p>
+         </li>	
+
+
+         <li class="publication" data-time="20131201" data-venue="TCYB" data-topic="Human Detection & Tracking" data-type="Journals">
+               <a href="https://ieeexplore.ieee.org/document/6583249/" target="blank">
+                Real-time multiple human perception with color-depth cameras on a mobile robot
+                </a><br />		
+                Hao Zhang, Christopher Reardon, and Lynne E. Parker
+               <br /><em>
+                IEEE Transactions on Cybernetics
+               </em>
+               (TCYB), vol. 43, no. 5, pp. 1429-1441, Oct. 2013.
+<!--               <br />
+               Impact Factor: 4.943.-->
+         </li>	
+
+         <li class="publication" data-time="20131001" data-venue="TNANO" data-topic="Interdisciplinary Research" data-type="Journals">
+               <a href="https://ieeexplore.ieee.org/document/6418036/" target="blank">
+                Monitoring the environmental impact of TiO2 nanoparticles using a plant-based sensor network
+                </a><br />		
+               Scott C. Lenaghan, Yuanyuan Li, Hao Zhang, Jason N. Burris, C. Neal Stewart, Lynne E. Parker, and Mingjun Zhang
+               <br /><em>
+                IEEE Transactions on Nanotechnology
+               </em>
+               (TNANO), vol.12, no.2, pp.182-189, 2013.
+<!--               <br />
+               Impact Factor: 1.702.-->
+         </li>	
+
+
+         <li class="publication" data-time="20121201" data-venue="ICMLA" data-topic="Agent Modeling of Humans" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/document/6406623/" target="blank">
+               Regularized probabilistic latent semantic analysis with continuous observations
+                </a><br />		
+               Hao Zhang, Richard Edwards, and Lynne E. Parker
+               <br /><em>
+               IEEE International Conference on Machine Learning and Applications
+               </em>
+               (ICMLA), 2012.
+               <br />
+         </li>	
+
+         <li class="publication" data-time="20120701" data-venue="PDPTA" data-topic="Interdisciplinary Research" data-type="Conferences">
+               <a href="http://worldcomp-proceedings.com/proc/p2012/PDP4282.pdf" target="blank">
+                HPC usage behavior analysis and performance estimation with machine learning techniques                </a><br />		
+               Hao Zhang, Haihang You, Bilel Hadri, and Mark Fahey
+               <br /><em>
+               International Conference on Parallel and Distributed Processing Techniques and Applications
+               </em>
+               (PDPTA), 2012.
+         </li>	
+
+         <li class="publication" data-time="20120524" data-venue="JSSPP" data-topic="Interdisciplinary Research" data-type="Workshops">
+               <a href="">
+                Comprehensive workload analysis and modeling of a petascale supercomputer
+                </a><br />		
+               Haihang You and Hao Zhang
+               <br /> <em>
+               Workshop on Job Scheduling Strategies for Parallel Processing
+               </em>
+               (JSSPP) in conjunction with IPDPS, 2012.
+         </li>
+         	
+         <li class="publication" data-time="20110925" data-venue="IROS" data-topic="Agent Modeling of Humans" data-type="Conferences">
+               <a href="https://ieeexplore.ieee.org/document/6094489/" target="blank">
+                4-Dimensional local spatio-temporal features for human activity recognition
+                </a><br />		
+               Hao Zhang, and Lynne E. Parker
+               <br /><em>
+               IEEE International Conference on Intelligent Robots and Systems
+               </em>
+               (IROS), 2011.
+         </li>	
+
+         <li class="publication" data-time="20080901" data-venue="ITSC" data-topic="Interdisciplinary Research" data-type="Conferences">
+               <a href="">
+                A novel method for background suppression in millimeter-wave traffic radar sensor
+                 </a><br />		
+               Hao Zhang, Wen Yu, and Xiaowei Sun
+               <br /><em>IEEE International Conference on Intelligent Transportation Systems</em> (ITSC), 2008.
+            </li>	
+
+            <li class="publication" data-time="20080901" data-venue="ITSC" data-topic="Interdisciplinary Research" data-type="Conferences">
+               <a href="">
+               Adaptive traffic lane detection based on normalized power accumulation
+               </a><br />		
+               Hao Zhang, Wen Yu, and Xiaowei Sun
+               <br /><em>IEEE International Conference on Intelligent Transportation Systems</em> (ITSC), 2008.
+            </li>		
+
+            <li class="publication" data-time="20080501" data-venue="JIMW" data-topic="Interdisciplinary Research" data-type="Journals">
+               <a href="">
+                Background power spectrum recognition in applications of millimeter wave flow detection radar
+               </a><br />		
+               Hao Zhang, Wen Yu, and Xiaowei Sun
+               <br /><em>
+               Journal of Infrared and Millimeter Waves</em> (JIMW), vol. 27, no. 6, 2008.
+            </li>		
+            	
+      </div>
+    </div>
+    </div>
+  </div>
+  <script type="text/javascript">$(document).ready(toggle('data-time', false));</script>
+
+  <footer>
+    <div id="contact">
+      <h4>Contact</h4>
+      <hr>
+      <div class="row">
+        <div class="col-sm-4" style="text-align: center;">
+          <img src="images/people/hzhang.jpg" style="width: 50%; margin: 0 auto;">
+          <p>
+            <a href="http://inside.mines.edu/~hzhang/" target="_blank" style="color: #333399;">Dr. Hao Zhang</a>
+          </p>
+        </div>
+        <div class="col-sm-4" style="text-align: center;">
+           <p>
+            Dept. of Computer Science <br>
+            Colorado School of Mines <br>
+            1610 Illinois Street <br>
+            Golden, CO 80401
+          </p>
+        </div>
+        <div class="col-sm-4" style="text-align: center;">
+          <p>
+            Lab: Brown Hall BBW 325 <br>
+            Office: Brown Hall 250 <br>
+            Email: hzhang@mines.edu <br>
+            Phone: (303) 273-3581 <br>
+            Fax: (303) 273-3602
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="footer-external">
+      <p><a href="index.html">HCRobotics Lab</a> | <a href="http://inside.mines.edu/CS-home">Department of Computer Science</a> | <a href="http://mines.edu">Colorado School of Mines</a></p>
+    </div>
+  </footer>
+</body>
+</html>
