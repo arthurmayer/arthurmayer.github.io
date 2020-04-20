@@ -16,11 +16,11 @@ function displayNews(XML){
     HTML = "";
 
     for (let i=0; i<news.length; i++) {
-        HTML += "<li><h5>"+titles[i].nodeValue+"</h5><p>";
+        HTML += "<li><h5>"+titles[i].innterHTML+"</h5><p>";
         if (extern[i] !== ""){
-            HTML += "See the full article <a href=\""+extern[i].nodeValue+"\">here</a>.<br />";
+            HTML += "See the full article <a href=\""+extern[i].innerHTML+"\">here</a>.<br />";
         }
-        HTML += dates[i].nodeValue+"</p></li>";
+        HTML += dates[i].innerHTML+"</p></li>";
     }
 
     document.getElementById("news-items").innerHTML = HTML;
