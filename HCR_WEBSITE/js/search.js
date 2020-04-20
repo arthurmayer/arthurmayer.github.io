@@ -1,4 +1,4 @@
-var getHTML = function ( url, callback ) {
+var getHTML = function ( url, callback, pagejson ) {
     // Feature detection
     if ( !window.XMLHttpRequest ) return;
     // Create new request
@@ -6,7 +6,7 @@ var getHTML = function ( url, callback ) {
     // Setup callback
     xhr.onload = function() {
         if ( callback && typeof( callback ) === 'function' ) {
-            callback( this.responseXML );
+            callback( this.responseXML, pagejson );
         }
     }
     // Get the HTML
@@ -15,19 +15,50 @@ var getHTML = function ( url, callback ) {
     xhr.send();
 };
 
+/*function getHTML(url) {
+  // Return a new promise.
+  return new Promise(function(resolve, reject) {
+    // Do the usual XHR stuff
+    var req = new XMLHttpRequest();
+    req.open('GET', url);
+
+    req.onload = function() {
+      // This is called even on 404 etc
+      // so check the status
+      if (req.status == 200) {
+        // Resolve the promise with the response text
+        resolve(req.response);
+      }
+      else {
+        // Otherwise reject with the status text
+        // which will hopefully be a meaningful error
+        reject(Error(req.statusText));
+      }
+    };
+
+    // Handle network errors
+    req.onerror = function() {
+      reject(Error("Network Error"));
+    };
+
+    // Make the request
+    req.send();
+  });
+}*/
+
 var sites = ["./index.html", "./people.html", "./outreach.html", "./publications.html", "./media.html"];
 
-var pagejson = {};
+var PJ = {};
 for (const site of sites){
-    getHTML(site, function(page){
+    PJ = getHTML(site, function(page, pagejson){
         pagejson[site] = {
             "title": page.title,
             "content": page.getElementById("main_content").innerHTML.replace(/(<([^>]+)>)/ig,"").replace(/(\n)/ig,""),
             "url": page.URL,
             "path": site
             };
-    });
-    console.log(pagejson);
+        return pagejson;
+    }, PJ);
 }
 
 
@@ -35,7 +66,7 @@ var searchIndex = lunr(function() {
     this.ref("id");
     this.field("title", { boost: 10 });
     this.field("content");
-    for (var key in pagejson) {
+    for (var key in PJ) {
         this.add({
             "id": key,
             "title": pages[key].title,
