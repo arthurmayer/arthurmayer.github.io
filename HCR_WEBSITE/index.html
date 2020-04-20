@@ -10,32 +10,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="js/createHeaderFooter.js"></script>
 </head>
 
 <body>
-  <header>
-    <div id="logo">
-      <div id="logo_text">
-        <h1><a href="index.html"><strong>Human-Centered Robotics Lab</strong></a></h1>
-        <h4>Lifelong collaborative autonomy, robot adaptation, multisensory perception, and human-robot/swarm teaming</h2>
-      </div>
-    </div>
-    <nav class="navbar navbar-expand-sm navbar-light sticky-top">
-      <ul class="navbar-nav">
-        <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="people.html">People</a></li>
-        <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
-        <li class="nav-item"><a class="nav-link" href="outreach.html">Outreach</a></li>
-        <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
-        <li class="nav-item"><a class="nav-link" href="media.html">Media</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <header></header>
 
   <div id="carousel" class="carousel slide" data-ride="carousel" style="background-color: black; align-items: center;">
     <div class="carousel-inner">
-      <div class="carousel-item active">
+      <!-- div class="carousel-item active">
         <img class="car_img" src="images/CsmView.jpg" alt="View of Mines" />
       </div>
       <div class="carousel-item">
@@ -45,7 +28,13 @@
         <img class="car_img" src="images/CsmRecCenter.jpg" alt="Student Recreation Center" />
       </div>
       <div class="carousel-item">
-        <img class="car_img" src= "images/HCRoboticsDemos.png" alt="Human-Centered Robotics Demos" />
+        <img class="car_img" src="images/HCRoboticsDemos.png" alt="Human-Centered Robotics Demos" />
+      </div -->
+      <div class="carousel-item active">
+        <img class="car_img" src="images/CsmView_2.jpg" alt="View of Mines" />
+      </div>
+      <div class="carousel-item">
+        <img class="car_img" src="images/AspenView.jpeg" alt="Aspen View" />
       </div>
     </div>
 
@@ -54,9 +43,8 @@
     <a class="carousel-control-next" href="#carousel" data-slide="next"><span class="carousel-control-next-icon" /></a>
   </div>
 
-  <div id="main_content">
   <div class="row" style="margin: 1%;">
-    <div class="col-md-6" style="padding: 1%;">
+    <div class="col-md-6" id="content">
       <h3>About</h3>
       <p>The Human-Centered Robotics Lab is directed by Dr. Hao Zhang and is dedicated to innovative research on <em>lifelong collaborative autonomy</em>,
         with the goal of enabling robots to collaborate with humans, assist people, take over tasks where our current society has shortcomings, and operate over long periods of time (e.g., across days, seasons, and eventually over their lifetimes).
@@ -77,13 +65,42 @@
     </div>
 
     <div class="col-md-6" id="news">
-      <h4>News</h4>
+      <h3>News</h3>
       <hr>
-      <table>
-        <tr>
-          <td>[TODO]</td>
-        <tr>
-      </table>
+      <ul>
+        <li>
+          <h5>Congratulations to Hao Zhang on his promotion to Associate Professor with tenure.</h5>
+          <p>See the full article <a href="https://www.minesnewsroom.com/news/21-mines-faculty-members-awarded-promotions-tenure">here</a>.<br />
+            April 3, 2020
+          </p>
+        </li>
+        <li>
+          <h5>New project on AR-enabled communication for human-robot teaming is funded by ARL.<h5>
+          <p>January 29, 2020</p>
+        </li>
+        <li>
+          <h5>Congratulations to Dr. Hao Zhang on his NSF CAREER award for robot reflection and lifelong adaptation research.</h5>
+          <p>See the full article <a href="https://www.minesnewsroom.com/news/zhang-wins-nsf-career-award-robot-reflection-and-imagination-research">here</a>.<br />
+            January 23, 2020
+          </p>
+        </li>
+        <li>
+          <h5>Four papers are accepted to ICRA. Congrats to Brian Reily and Peng Gao.</h5>
+          <p>January 21, 2020</p>
+        </li>
+        <li>
+          <h5>Our IJRR paper is accepted. Congrats to Sriram Siva.</h5>
+          <p>January 2, 2020</p>
+        </li>
+        <li>
+          <h5>Congratulations to Ziling Zhang on successfully defending the MS Thesis!</h5>
+          <p>November 14, 2020</p>
+        </li>
+        <li>
+          <h5>Congratulations to Zach Nahman on successfully defending the MS Thesis!</h5>
+          <p>November 11, 2020</p>
+        </li>
+      </ul>
       <br />
       <table>
         <tr>
@@ -94,41 +111,7 @@
       </table>
     </div>
   </div>
-  </div>
 
-  <footer>
-    <div id="contact">
-    <h4>Contact</h4>
-    <hr>
-    <div class="row">
-      <div class="col-sm-4" style="text-align: center;">
-        <img src="images/people/hzhang.jpg" style="width: 50%; margin: 0 auto;">
-        <p>
-          <a href="http://inside.mines.edu/~hzhang/" target="_blank" style="color: #333399;">Dr. Hao Zhang</a>
-        </p>
-        </div>
-        <div class="col-sm-4" style="text-align: center;">
-           <p>
-            Dept. of Computer Science <br>
-            Colorado School of Mines <br>
-            1610 Illinois Street <br>
-            Golden, CO 80401
-          </p>
-        </div>
-        <div class="col-sm-4" style="text-align: center;">
-          <p>
-            Lab: Brown Hall BBW 325 <br>
-            Office: Brown Hall 250 <br>
-            Email: hzhang@mines.edu <br>
-            Phone: (303) 273-3581 <br>
-            Fax: (303) 273-3602
-          </p>
-        </div>
-      </div>
-    </div>
-    <div id="footer-external">
-      <p><a href="index.html">HCRobotics Lab</a> | <a href="http://inside.mines.edu/CS-home">Department of Computer Science</a> | <a href="http://mines.edu">Colorado School of Mines</a></p>
-    </div>
-  </footer>
+  <footer></footer>
 </body>
 </html>

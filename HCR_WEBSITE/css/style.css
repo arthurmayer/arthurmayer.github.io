@@ -27,6 +27,10 @@
   //padding-right: 10%;
 }
 
+#content {
+  padding: 1%;
+}
+
 #contact {
   padding: 1%;
   background-color: #DDDDDD;
