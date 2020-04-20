@@ -6,8 +6,8 @@ function displayNews(XML){
     extern = [];
 
     news = xml.getElementsByTagName("news-item");
-    for (const new in news){
-        children = new.childNodes;
+    for (const n in news){
+        children = n.childNodes;
         dates.append(children[0]);
         titles.append(children[1]);
         extern.append(children[2]);
