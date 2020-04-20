@@ -6,18 +6,18 @@ function displayNews(XML){
     extern = [];
 
     news = xml.getElementsByTagName("news-item");
-    for (const n in news){
-        children = n.childNodes;
-        dates.append(children[0]);
-        titles.append(children[1]);
-        extern.append(children[2]);
+    for (let n=0; n<news.length; n++){
+        children = news[n].childNodes;
+        dates.push(children[1]);
+        titles.push(children[3]);
+        extern.push(children[5]);
     }
 
     HTML = "";
 
     for (let i=0; i<news.length; i++) {
-        HTML += "<li><h5>"+titles[i].innterHTML+"</h5><p>";
-        if (extern[i] !== ""){
+        HTML += "<li><h5>"+titles[i].innerHTML+"</h5><p>";
+        if (extern[i].innerHTML !== ""){
             HTML += "See the full article <a href=\""+extern[i].innerHTML+"\">here</a>.<br />";
         }
         HTML += dates[i].innerHTML+"</p></li>";
