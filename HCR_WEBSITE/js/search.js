@@ -50,14 +50,13 @@ var sites = ["./index.html", "./people.html", "./outreach.html", "./publications
 
 var PJ = {};
 for (const site of sites){
-    PJ = getHTML(site, function(page, pagejson){
+    getHTML(site, function(page, pagejson){
         pagejson[site] = {
             "title": page.title,
             "content": page.getElementById("main_content").innerHTML.replace(/(<([^>]+)>)/ig,"").replace(/(\n)/ig,""),
             "url": page.URL,
             "path": site
             };
-        return pagejson;
     }, PJ);
 }
 
