@@ -6,7 +6,13 @@ function displayNews(XML){
     extern = [];
 
     news = xml.getElementsByTagName("news-item");
-    for (let n=0; n<news.length; n++){
+    news_list = document.getElementById("news-items");
+    num_to_display = parseInt(news_items.getAttribute("display_count"));
+    if (num_to_display.isNaN() || num_to_display < 1){
+        num_to_display = news.length;
+    }
+    num_to_display = Math.min(num_to_display, news.length);
+    for (let n=0; n<num_to_display; n++){
         children = news[n].childNodes;
         dates.push(children[1]);
         titles.push(children[3]);
@@ -15,7 +21,7 @@ function displayNews(XML){
 
     HTML = "";
 
-    for (let i=0; i<news.length; i++) {
+    for (let i=0; i<num_to_display; i++) {
         HTML += "<li><h5>"+titles[i].innerHTML+"</h5><p>";
         if (extern[i].innerHTML !== ""){
             HTML += "See the full article <a href=\""+extern[i].innerHTML+"\">here</a>.<br />";
@@ -23,7 +29,7 @@ function displayNews(XML){
         HTML += dates[i].innerHTML+"</p></li>";
     }
 
-    document.getElementById("news-items").innerHTML = HTML;
+    news_items.innerHTML = HTML;
 }
 
 fetch("./newsfeed/news-items.xml")

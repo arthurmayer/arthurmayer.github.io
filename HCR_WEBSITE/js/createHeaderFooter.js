@@ -19,7 +19,6 @@ document.getElementsByTagName("header")[0].innerHTML = `
           <li class="nav-item" id="nav-outreach"><a class="nav-link" href="outreach.html">Outreach</a></li>
           <li class="nav-item" id="nav-publications"><a class="nav-link" href="publications.html">Publications</a></li>
           <li class="nav-item" id="nav-media"><a class="nav-link" href="media.html">Media</a></li>
-          <li class="nav-item" id="nav-news"><a class="nav-link" href="news.html">News</a></li>
           <li class="nav-item" id="nav-contact"><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
       </div>
