@@ -32,6 +32,8 @@ function displayNews(XML){
     news_items.innerHTML = HTML;
 }
 
-fetch("./newsfeed/news-items.xml")
-  .then(response => response.text())
-  .then(text => displayNews(text))
+document.ready(fucnction(){
+    fetch("./newsfeed/news-items.xml")
+      .then(response => response.text())
+      .then(text => displayNews(text))
+});
