@@ -32,7 +32,7 @@ function displayNews(XML){
     news_items.innerHTML = HTML;
 }
 
-document.ready(fucnction(){
+$(document).ready(function(){
     fetch("./newsfeed/news-items.xml")
       .then(response => response.text())
       .then(text => displayNews(text))
