@@ -1,38 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<news>
-  <news-item>
-    <date-published>April 3, 2020</date-published>
-    <title>Congratulations to Hao Zhang on his promotion to Associate Professor with tenure.</title>
-    <external-link>https://www.minesnewsroom.com/news/21-mines-faculty-members-awarded-promotions-tenure</external-link>
-  </news-item>
-  <news-item>
-    <date-published>January 29, 2020</date-published>
-    <title>New project on AR-enabled communication for human-robot teaming is funded by ARL.</title>
-    <external-link></external-link>
-  </news-item>
-  <news-item>
-    <date-published>January 23, 2020</date-published>
-    <title>Congratulations to Dr. Hao Zhang on his NSF CAREER award for robot reflection and lifelong adaptation research.</title>
-    <external-link>https://www.minesnewsroom.com/news/zhang-wins-nsf-career-award-robot-reflection-and-imagination-research</external-link>
-  </news-item>
-  <news-item>
-    <date-published>January 21, 2020</date-published>
-    <title>Four papers are accepted to ICRA. Congrats to Brian Reily and Peng Gao.</title>
-    <external-link></external-link>
-  </news-item>
-  <news-item>
-    <date-published>January 2, 2020</date-published>
-    <title>Our IJRR paper is accepted. Congrats to Sriram Siva.</title>
-    <external-link></external-link>
-  </news-item>
-  <news-item>
-    <date-published>November 14, 2020</date-published>
-    <title>Congratulations to Ziling Zhang on successfully defending the MS Thesis!</title>
-    <external-link></external-link>
-  </news-item>
-  <news-item>
-    <date-published>November 11, 2019</date-published>
-    <title>Congratulations to Zach Nahman on successfully defending the MS Thesis!</title>
-    <external-link></external-link>
-  </news-item>
-</news>
+<news-item>
+  <date-published>April 3, 2020</date-published>
+  <title>Congratulations to Hao Zhang on his promotion to Associate Professor with tenure.</title>
+  <external-link>https://www.minesnewsroom.com/news/21-mines-faculty-members-awarded-promotions-tenure</external-link>
+</news-item>
+<news-item>
+  <date-published>January 29, 2020</date-published>
+  <title>New project on AR-enabled communication for human-robot teaming is funded by ARL.</title>
+  <external-link></external-link>
+</news-item>
+<news-item>
+  <date-published>January 23, 2020</date-published>
+  <title>Congratulations to Dr. Hao Zhang on his NSF CAREER award for robot reflection and lifelong adaptation research.</title>
+  <external-link>https://www.minesnewsroom.com/news/zhang-wins-nsf-career-award-robot-reflection-and-imagination-research</external-link>
+</news-item>
+<news-item>
+  <date-published>January 21, 2020</date-published>
+  <title>Four papers are accepted to ICRA. Congrats to Brian Reily and Peng Gao.</title>
+  <external-link></external-link>
+</news-item>
+<news-item>
+  <date-published>January 2, 2020</date-published>
+  <title>Our IJRR paper is accepted. Congrats to Sriram Siva.</title>
+  <external-link></external-link>
+</news-item>
+<news-item>
+  <date-published>November 14, 2020</date-published>
+  <title>Congratulations to Ziling Zhang on successfully defending the MS Thesis!</title>
+  <external-link></external-link>
+</news-item>
+<news-item>
+  <date-published>November 11, 2019</date-published>
+  <title>Congratulations to Zach Nahman on successfully defending the MS Thesis!</title>
+  <external-link></external-link>
+</news-item>

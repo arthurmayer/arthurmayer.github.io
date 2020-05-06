@@ -65,6 +65,8 @@ footer a{
 
 .sponsor {
   width: 100%;
+  max-width: 80px;
+  min-width: 50px;
 }
 
 .people {

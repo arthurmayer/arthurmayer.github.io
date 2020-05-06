@@ -7,8 +7,8 @@ function displayNews(XML){
 
     news = xml.getElementsByTagName("news-item");
     news_list = document.getElementById("news-items");
-    num_to_display = parseInt(news_list.getAttribute("count"));
-    if (Number.isNaN(num_to_display) || num_to_display < 1){
+    num_to_display = parseInt(news_items.getAttribute("display_count"));
+    if (num_to_display.isNaN() || num_to_display < 1){
         num_to_display = news.length;
     }
     num_to_display = Math.min(num_to_display, news.length);
@@ -29,7 +29,7 @@ function displayNews(XML){
         HTML += dates[i].innerHTML+"</p></li>";
     }
 
-    news_list.innerHTML = HTML;
+    news_items.innerHTML = HTML;
 }
 
 fetch("./newsfeed/news-items.xml")
