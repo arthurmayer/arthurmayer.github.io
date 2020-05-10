@@ -8,7 +8,7 @@ function displayNews(XML){
     news = xml.getElementsByTagName("news-item");
     news_list = document.getElementById("news-items");
     num_to_display = parseInt(news_list.getAttribute("display_count"));
-    if (num_to_display.isNaN() || num_to_display < 1){
+    if (Number.isNaN(num_to_display) || num_to_display < 1){
         num_to_display = news.length;
     }
     num_to_display = Math.min(num_to_display, news.length);
