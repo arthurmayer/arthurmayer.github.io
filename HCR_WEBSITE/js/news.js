@@ -29,7 +29,7 @@ function displayNews(XML){
         HTML += dates[i].innerHTML+"</p></li>";
     }
 
-    news_items.innerHTML = HTML;
+    news_list.innerHTML = HTML;
 }
 
 $(document).ready(function(){
