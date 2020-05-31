@@ -22,7 +22,7 @@ function displayNews(XML){
     HTML = "";
 
     for (let i=0; i<num_to_display; i++) {
-        HTML += "<li><h5>"+titles[i].innerHTML+"</h5><p>";
+        HTML += "<li><p>"+titles[i].innerHTML+"</p><p>";
         if (extern[i].innerHTML !== ""){
             HTML += "See the full article <a href=\""+extern[i].innerHTML+"\">here</a>.<br />";
         }
