@@ -72,7 +72,27 @@
 
     <div class="col-md-4 center-block" align="center">
       <iframe src="data:text/html;charset=utf-8,%3ca%20class%3d%22twitter-timeline%22%20href%3d%22https%3a%2f%2ftwitter.com%2fHCRoboticsLab%3fref_src%3dtwsrc%5Etfw%22%20data-tweet-limit%3d%225%22%20%3eTweets%20by%20HCRoboticsLab%3c%2fa%3e%20%3cscript%20async%20src%3d%22https%3a%2f%2fplatform.twitter.com%2fwidgets.js%22%20charset%3d%22utf-8%22%3e%3c%2fscript%3e" width="95%" height="90%"></iframe>
-      <iframe src="https://medium.com/@hcroboticslab"></iframe>
+      <iframe class="media-embed" id="Medium-Frame" src="about:blank"></iframe>
+      <script type="text/javascript">
+        var getHTML = function ( url, callback ) {
+            if ( !window.XMLHttpRequest ) return;
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                if ( callback && typeof( callback ) === 'function' ) {
+                    callback( this.responseXML );
+                }
+            }
+            xhr.open( 'GET', url );
+            xhr.responseType = 'document';
+            xhr.send();
+        };
+        getHTML("https://medium.com/@hcroboticslab", function(page){
+            var doc = document.getElementById('Medium-Frame').contentWindow.document;
+            doc.open();
+            doc.write('<html><head><title></title></head><body>Hello world.</body></html>');
+            doc.close();
+        });
+      </script>
     </div>
   </div>
 
