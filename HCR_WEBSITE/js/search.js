@@ -22,7 +22,7 @@ for (const site of sites){
     getHTML(site, function(page){
         pagejson[site] = {
             "title": page.title,
-            "content": page.getElementById("main_content").innerHTML.replace(/(<([^>]+)>)/ig,"").replace(/(\n)/ig,""),
+            "content": page.getElementById("content").innerHTML.replace(/(<([^>]+)>)/ig,"").replace(/(\n)/ig,""),
             "url": page.URL,
             "path": site
             };
