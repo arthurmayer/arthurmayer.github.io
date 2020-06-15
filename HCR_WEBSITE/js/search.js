@@ -67,7 +67,7 @@ for (const site of sites){
             resultsString +=   "<div class='snippet'><p>" + r.content.substring(r.indexOf(searchTerm), r.indexOf(searchTerm)+200) + "</p></div>";
             resultsString += "</li>"
         });
-        resultsString.replace(new RegExp(searchTerm, "g"), "<b>"+searchTerm+"</b>);
+        resultsString.replace(new RegExp(searchTerm, "g"), "<b>"+searchTerm+"</b>");
         document.getElementById("search-results").innerHTML = resultsString;
     });
 }
