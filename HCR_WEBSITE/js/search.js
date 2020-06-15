@@ -61,8 +61,9 @@ for (const site of sites){
         // resultPages from previous example
         resultsString = "";
         resultPages.forEach(function (r) {
+            console.log(r);
             resultsString += "<li>";
-            resultsString +=   "<a class='result' href='" + r.url + "?q=" + searchTerm + "'><h3>" + r.title + "</h3></a>";
+            resultsString +=   "<a class='result' href='" + r.url + "'><b>" + r.title + "</b></a>";
             resultsString +=   "<div class='snippet'>" + r.content.substring(0, 200) + "</div>";
             resultsString += "</li>"
         });
