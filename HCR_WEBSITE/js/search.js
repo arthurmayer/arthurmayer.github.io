@@ -63,8 +63,8 @@ for (const site of sites){
         resultPages.forEach(function (r) {
             console.log(r);
             resultsString += "<li>";
-            resultsString +=   "<a class='result' href='" + r.url + "'><b>" + r.title + "</b></a>";
-            resultsString +=   "<div class='snippet'><p>" + r.content.substring(r.indexOf(searchTerm), r.indexOf(searchTerm)+200) + "</p></div>";
+            resultsString +=   "<a class='result' href='" + r.url + "'><b>" + r.path.substring(2, r.path.length-5) + "</b></a>";
+            resultsString +=   "<div class='snippet'><p>" + r.content.substring(r.content.indexOf(searchTerm), r.content.indexOf(searchTerm)+200) + "</p></div>";
             resultsString += "</li>"
         });
         resultsString.replace(new RegExp(searchTerm, "g"), "<b>"+searchTerm+"</b>");
