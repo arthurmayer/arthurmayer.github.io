@@ -64,9 +64,10 @@ for (const site of sites){
             console.log(r);
             resultsString += "<li>";
             resultsString +=   "<a class='result' href='" + r.url + "'><b>" + r.title + "</b></a>";
-            resultsString +=   "<div class='snippet'>" + r.content.substring(0, 200) + "</div>";
+            resultsString +=   "<div class='snippet'><p>" + r.content.substring(r.indexOf(searchTerm), r.indexOf(searchTerm)+200) + "</p></div>";
             resultsString += "</li>"
         });
+        resultsString.replace(new RegExp(searchTerm, "g"), "<b>"+searchTerm+"</b>);
         document.getElementById("search-results").innerHTML = resultsString;
     });
 }
