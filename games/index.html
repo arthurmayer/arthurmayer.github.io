@@ -1,21 +1,23 @@
 <html>
   <body>
-     <p>Hello, world</p>
      <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
      <script>
+	 const load;
     window.RufflePlayer = window.RufflePlayer || {};
     window.addEventListener("load", (event) => {
         const ruffle = window.RufflePlayer.newest();
         const player = ruffle.createPlayer();
-window.RufflePlayer.config = {
-...window.RufflePlayer.config,
-    "publicPath": "https://www.nitrome.com/games/flipside/",
-}
+		load = () => player.load("flipside-unlocked.swf");
         const container = document.getElementById("container");
-        container.appendChild(player);
+        container.appendChild(player);		
+		window.RufflePlayer.config = {
+		...window.RufflePlayer.config,
+			"publicPath": "https://www.nitrome.com/games/flipside/",
+		}
         player.load("flipside-unlocked.swf");
     });
 </script>
+	<p>Hello, world</p><button onclick="load()">Refresh SWF</button>
   <div id="container"></div>
   </body>
 </html>
