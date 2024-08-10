@@ -3,21 +3,24 @@
      <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
      <script>
 	 var load;
+	 var currentSwf = "flipside-unlocked";
     window.RufflePlayer = window.RufflePlayer || {};
     window.addEventListener("load", (event) => {
         const ruffle = window.RufflePlayer.newest();
         const player = ruffle.createPlayer();
-		load = () => player.load("flipside-unlocked.swf");
+		load = () => player.load(currentSwf+".swf");
         const container = document.getElementById("container");
         container.appendChild(player);		
-		/*window.RufflePlayer.config = {
-		...window.RufflePlayer.config,
-			"publicPath": "https://www.nitrome.com/games/flipside/",
-		}*/
-        player.load("flipside-unlocked.swf");
+        load();
     });
+	function updateSwf() {
+	  currentSwf = document.getElementById('swfname').value;
+	  load()
+	}
 </script>
-	<p>Hello, world</p><button onclick="load()">Refresh SWF</button>
+	<button onclick="load()">Refresh SWF</button>
+	<button onclick="updateSwf">Load this swf -></button>
+	<input type="text" id="swfname" value="flipside-unlocked">
   <div id="container"></div>
   </body>
 </html>
