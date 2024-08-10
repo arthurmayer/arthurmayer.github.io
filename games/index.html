@@ -1,26 +1,75 @@
 <html>
   <body>
-     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-     <script>
-	 var load;
-	 var currentSwf = "flipside-unlocked";
-    window.RufflePlayer = window.RufflePlayer || {};
-    window.addEventListener("load", (event) => {
-        const ruffle = window.RufflePlayer.newest();
-        const player = ruffle.createPlayer();
-		load = () => player.load(currentSwf+".swf");
-        const container = document.getElementById("container");
-        container.appendChild(player);		
-        load();
-    });
-	function updateSwf() {
-	  currentSwf = document.getElementById('swfname').value;
-	  load()
-	}
-</script>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script> 
 	<button onclick="load()">Refresh SWF</button>
 	<button onclick="updateSwf()">Load this swf -></button>
 	<input type="text" id="swfname" value="flipside-unlocked">
-  <div id="container"></div>
+	<button onclick="download()">Export all save data</button>
+	<input type="file" id="fileInput" accept=".json">
+	<button class="custom-file-upload" onclick="upload()"><input type="file" id="fileInput" accept=".json">Import save data</button>
+	<p id="confirmation"></p>
+    <div id="container"></div>
+	<script>
+		var load;
+		var currentSwf = "flipside-unlocked";
+		window.RufflePlayer = window.RufflePlayer || {};
+		window.addEventListener("load", (event) => {
+			const ruffle = window.RufflePlayer.newest();
+			const player = ruffle.createPlayer();
+			load = () => player.load(currentSwf+".swf");
+			const container = document.getElementById("container");
+			container.appendChild(player);		
+			load();
+		});
+		function updateSwf() {
+		  currentSwf = document.getElementById('swfname').value;
+		  load()
+		}
+		function download() {
+		  const b = new Blob([JSON.stringify(window.localStorage)], {type: "text/plain"});
+		  const a = document.createElement('a');
+		  a.href = URL.createObjectURL(b);
+		  a.download = "SwfGameData.json"
+		  console.log(a)
+		  document.body.appendChild(a);
+		  a.click();
+		  document.body.removeChild(a);
+		}
+		function upload() {
+			document.getElementById('confirmation').innerHTML = "";
+			document.getElementById("fileInput").click();
+		}
+		document.getElementById("fileInput").addEventListener('change', function() {
+			if (this.files.length === 0) {
+				return;
+			}
+			const file = this.files[0];
+			const reader = new FileReader();
+			reader.onload = function(event) {
+				processFileContent(event.target.result);
+			};
+			reader.readAsText(file);
+		});
+		function processFileContent(content) {
+			var message = "Success!";
+			var data = {};
+			try {
+				data = JSON.parse(content);
+			} catch (e) {
+				message = "Failed to parse save data. See console for errors.";
+				console.error(e);
+			}
+			for (let key in data) {
+				window.localStorage.setItem(key, data[key]);
+			}
+			document.getElementById('confirmation').innerHTML = message;
+		}
+		//window.localStorage.setItem("arthurmayer.github.io/games/mutiny.swf/so_mutiny1", "AL8AAAHXVENTTwAEAAAAAAAKc29fbXV0aW55MQAAAAAAD2xldmVsc191bmxvY2tlZAgAAAAhAAEwAD/wAAAAAAAAAAExAD/wAAAAAAAAAAEyAD/wAAAAAAAAAAEzAD/wAAAAAAAAAAE0AD/wAAAAAAAAAAE1AD/wAAAAAAAAAAE2AD/wAAAAAAAAAAE3AD/wAAAAAAAAAAE4AD/wAAAAAAAAAAE5AD/wAAAAAAAAAAIxMAA/8AAAAAAAAAACMTEAP/AAAAAAAAAAAjEyAD/wAAAAAAAAAAIxMwA/8AAAAAAAAAACMTQAP/AAAAAAAAAAAjE1AD/wAAAAAAAAAAIxNgA/8AAAAAAAAAACMTcAP/AAAAAAAAAAAjE4AD/wAAAAAAAAAAIxOQA/8AAAAAAAAAACMjAAP/AAAAAAAAAAAjIxAD/wAAAAAAAAAAIyMgA/8AAAAAAAAAACMjMAP/AAAAAAAAAAAjI0AD/wAAAAAAAAAAIyNQA/8AAAAAAAAAACMjYAP/AAAAAAAAAAAjI3AD/wAAAAAAAAAAIyOAA/8AAAAAAAAAACMjkAP/AAAAAAAAAAAjMwAD/wAAAAAAAAAAIzMQA/8AAAAAAAAAACMzIAP/AAAAAAAAAAAAkA")
+	</script>
+	<style>
+		input[type="file"] {
+			display: none;
+		}
+	</style>
   </body>
 </html>
