@@ -3,27 +3,37 @@
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script> 
 	<button onclick="load()">Refresh SWF</button>
 	<button onclick="updateSwf()">Load this swf -></button>
-	<input type="text" id="swfname" value="flipside-unlocked">
+	<input type="text" id="swfname" value="">
 	<button onclick="download()">Export all save data</button>
 	<input type="file" id="fileInput" accept=".json">
 	<button class="custom-file-upload" onclick="upload()"><input type="file" id="fileInput" accept=".json">Import save data</button>
 	<p id="confirmation"></p>
     <div id="container"></div>
 	<script>
-		var load;
+		const player;
+		function load(name) {
+			if (!player) {
+				updateMessage("Ruffle Player has not loaded yet.");
+			} else if (!name) {
+				updateMessage("Please enter a swf name.");
+			else {
+				player.load(name+".swf").then(() => {
+					updateMessage("");
+				}).catch((e) => {
+					updateMessage(`Ruffle failed to load the file: ${e}`);
+				});
+			}
+		}
 		var currentSwf = "flipside-unlocked";
 		window.RufflePlayer = window.RufflePlayer || {};
 		window.addEventListener("load", (event) => {
 			const ruffle = window.RufflePlayer.newest();
 			const player = ruffle.createPlayer();
-			load = () => player.load(currentSwf+".swf");
 			const container = document.getElementById("container");
 			container.appendChild(player);		
-			load();
 		});
 		function updateSwf() {
-		  currentSwf = document.getElementById('swfname').value;
-		  load()
+		  load(document.getElementById('swfname').value);
 		}
 		function download() {
 		  const b = new Blob([JSON.stringify(window.localStorage)], {type: "text/plain"});
@@ -62,9 +72,11 @@
 			for (let key in data) {
 				window.localStorage.setItem(key, data[key]);
 			}
+			updateMessage(message);
+		}
+		function updateMessage(mess) {
 			document.getElementById('confirmation').innerHTML = message;
 		}
-		//window.localStorage.setItem("arthurmayer.github.io/games/mutiny.swf/so_mutiny1", "AL8AAAHXVENTTwAEAAAAAAAKc29fbXV0aW55MQAAAAAAD2xldmVsc191bmxvY2tlZAgAAAAhAAEwAD/wAAAAAAAAAAExAD/wAAAAAAAAAAEyAD/wAAAAAAAAAAEzAD/wAAAAAAAAAAE0AD/wAAAAAAAAAAE1AD/wAAAAAAAAAAE2AD/wAAAAAAAAAAE3AD/wAAAAAAAAAAE4AD/wAAAAAAAAAAE5AD/wAAAAAAAAAAIxMAA/8AAAAAAAAAACMTEAP/AAAAAAAAAAAjEyAD/wAAAAAAAAAAIxMwA/8AAAAAAAAAACMTQAP/AAAAAAAAAAAjE1AD/wAAAAAAAAAAIxNgA/8AAAAAAAAAACMTcAP/AAAAAAAAAAAjE4AD/wAAAAAAAAAAIxOQA/8AAAAAAAAAACMjAAP/AAAAAAAAAAAjIxAD/wAAAAAAAAAAIyMgA/8AAAAAAAAAACMjMAP/AAAAAAAAAAAjI0AD/wAAAAAAAAAAIyNQA/8AAAAAAAAAACMjYAP/AAAAAAAAAAAjI3AD/wAAAAAAAAAAIyOAA/8AAAAAAAAAACMjkAP/AAAAAAAAAAAjMwAD/wAAAAAAAAAAIzMQA/8AAAAAAAAAACMzIAP/AAAAAAAAAAAAkA")
 	</script>
 	<style>
 		input[type="file"] {
