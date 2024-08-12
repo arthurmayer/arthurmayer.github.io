@@ -46,7 +46,7 @@
 		  document.body.removeChild(a);
 		}
 		function upload() {
-			document.getElementById('confirmation').innerHTML = "";
+			updateMessage("");
 			document.getElementById("fileInput").click();
 		}
 		document.getElementById("fileInput").addEventListener('change', function() {
@@ -75,7 +75,7 @@
 			updateMessage(message);
 		}
 		function updateMessage(mess) {
-			document.getElementById('confirmation').innerHTML = message;
+			document.getElementById('confirmation').innerHTML = mess;
 		}
 	</script>
 	<style>
