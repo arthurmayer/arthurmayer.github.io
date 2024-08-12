@@ -16,7 +16,7 @@
 				updateMessage("Ruffle Player has not loaded yet.");
 			} else if (!name) {
 				updateMessage("Please enter a swf name.");
-			else {
+			} else {
 				player.load(name+".swf").then(() => {
 					updateMessage("");
 				}).catch((e) => {
