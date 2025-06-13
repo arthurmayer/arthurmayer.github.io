@@ -1,262 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      height: 3000px; /* So we can scroll a lot */
+      margin: 0;
     }
 
-    header {
-      background-color: #333;
+    .floating-button {
+      position: absolute;
+      background-color: #007BFF;
       color: white;
-      padding: 1rem;
-      position: fixed;
-      top: 0px;
-    }
-
-    nav {
-      display: flex;
-      gap: 1rem;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    main {
-      flex: 1;
-      padding: 2rem;
-    }
-
-    footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      position: sticky;
-      bottom: 0px;
+      border: none;
+      padding: 15px 20px;
+      border-radius: 50%;
+      font-size: 18px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 9999;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>My Website</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Services</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
+  <button class="floating-button" id="fab">+</button>
 
-  <main>
-    <h2>Welcome!</h2>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-    <p>This is a simple boilerplate with a nav banner and a footer.</p>
-  </main>
+  <script>
+    const button = document.getElementById('fab');
+    const padding = 20;
 
-  <footer>
-    <p>&copy; 2025 My Website. All rights reserved.</p>
-  </footer>
+    function updateButtonPosition() {
+      const vv = window.visualViewport;
+
+      const x = vv.pageLeft + vv.width - button.offsetWidth - padding;
+      const y = vv.pageTop + vv.height - button.offsetHeight - padding;
+
+      button.style.left = `${x}px`;
+      button.style.top = `${y}px`;
+    }
+
+    window.visualViewport.addEventListener('scroll', updateButtonPosition);
+    window.visualViewport.addEventListener('resize', updateButtonPosition);
+    window.addEventListener('scroll', updateButtonPosition); // fallback
+    window.addEventListener('resize', updateButtonPosition);
+
+    updateButtonPosition();
+  </script>
 
 </body>
 </html>
