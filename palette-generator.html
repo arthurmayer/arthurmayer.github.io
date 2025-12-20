@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>K-Means Color Palette (Accessible & Responsive)</title>
+  <style>
+    :root { --focus: #005fcc; --gap: 12px; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.5; }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+    .layout { display: grid; grid-template-columns: 1fr; gap: var(--gap); padding: 16px; max-width: 1200px; margin: 0 auto; }
+    @media (min-width: 960px) {
+      .layout { grid-template-columns: minmax(300px, 400px) 1fr; align-items: start; }
+    }
+
+    .controls { display: grid; gap: var(--gap); }
+    .group { display: grid; gap: 6px; }
+    .inline { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 8px; }
+    .inline > label { white-space: nowrap; }
+
+    label { font-weight: 600; }
+    input[type="number"], input[type="range"], input[type="file"], button, select { max-width: 100%; }
+    input[type="number"] { width: 104px; }
+    input[type="range"] { width: 220px; }
+
+    fieldset { border: 1px solid #e5e5e5; border-radius: 8px; padding: 10px; }
+    legend { padding: 0 6px; font-weight: 600; }
+
+    button { cursor: pointer; border: 1px solid #d0d0d0; border-radius: 10px; padding: 10px 14px; background: #fff; }
+    button[disabled] { opacity: .6; cursor: progress; }
+
+    .status { min-height: 1.2em; }
+    .visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+    .results { display: grid; gap: var(--gap); }
+    .palette-wrap { display: grid; gap: 8px; }
+    #palette { display: flex; flex-wrap: wrap; gap: 6px; }
+    .color-swatch { width: 68px; height: 68px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 12px; padding: 4px; text-align: center; user-select: text; }
+    .color-swatch.copyable { cursor: pointer; }
+
+    .preview { display: grid; gap: 8px; }
+    .preview-frame { border: 1px solid #ddd; border-radius: 10px; overflow: hidden; max-height: 60vh; background: #fff; }
+    @media (min-width: 960px) { .preview-frame { max-height: 70vh; background: #fff; } }
+    .preview-scroll { overflow: auto; max-height: 60vh; }
+    canvas { display: block; max-width: 100%; height: auto; image-rendering: auto; } @media (min-width: 960px) { .preview-scroll { max-height: 70vh; } }
+
+    .progress { height: 8px; background: #f0f0f0; border-radius: 999px; overflow: hidden; }
+    .bar { height: 100%; width: 0%; background: var(--focus); transition: width .2s linear; }
+
+    .btn-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  </style>
+  <script>
+    function onOpenCvReady(){
+      try { var s = document.getElementById('status'); if (s) s.textContent = 'OpenCV.js loaded. You can generate the palette.'; } catch(e) {}
+    }
+  </script>
+</head>
+<body>
+  <main class="layout" aria-labelledby="title">
+    <section class="controls" aria-describedby="intro">
+      <h1 id="title">Color Palette Generator</h1>
+      <p id="intro">Upload an image, choose options, then generate a color palette (sorted dark→light). The UI is keyboard accessible and announces updates.</p>
+
+      <div class="group">
+        <label for="imgInput">Image file</label>
+        <input type="file" id="imgInput" accept="image/*" />
+      </div>
+
+      <div class="group inline">
+        <label for="kInput">Palette size</label>
+        <input type="number" id="kInput" value="5" min="1" max="20" inputmode="numeric" />
+      </div>
+
+      <div class="group inline">
+        <label for="qualityRange">Resize quality (%)</label>
+        <input type="range" id="qualityRange" min="10" max="100" value="30" step="5" aria-describedby="qualityDesc" />
+        <output id="qualityVal" for="qualityRange" aria-live="polite">30</output>
+      </div>
+      <p id="qualityDesc" class="visually-hidden">Lower values downscale the image before clustering to speed up processing.</p>
+
+      <fieldset class="group">
+        <legend>Initialization method</legend>
+        <div role="radiogroup" aria-label="K-means initialization">
+          <label><input type="radio" name="initMethod" value="random" checked /> Random</label>
+          <label style="margin-left:12px"><input type="radio" name="initMethod" value="pp" /> K-Means++</label>
+        </div>
+      </fieldset>
+
+      <div class="group">
+        <div class="btn-row">
+          <button id="generateBtn" type="button">Generate palette</button>
+          <button id="cancelBtn" type="button" aria-disabled="true" disabled>Cancel</button>
+        </div>
+        <div class="status" id="status" aria-live="polite" aria-atomic="true"></div>
+        <div class="progress" aria-hidden="true"><div class="bar" id="progressBar"></div></div>
+      </div>
+
+      <div class="group">
+        <div class="inline">
+          <label for="copyFormat">Copy format</label>
+          <select id="copyFormat">
+            <option value="hex" selected>HEX (#RRGGBB)</option>
+            <option value="rgb">RGB (r, g, b)</option>
+            <option value="hsl">HSL (h, s%, l%)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="btn-row">
+          <button id="downloadJson" type="button" disabled aria-disabled="true">Download JSON</button>
+          <button id="downloadGpl" type="button" disabled aria-disabled="true">Download .gpl</button>
+          <button id="downloadSvg" type="button" title="Import SVG into Illustrator and create a swatch group" disabled aria-disabled="true">Download SVG</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="results">
+      <div class="palette-wrap" aria-labelledby="palette-title">
+        <h2 id="palette-title">Generated palette</h2>
+        <div id="palette" role="list"></div>
+      </div>
+
+      <div class="preview" aria-labelledby="preview-title">
+        <h2 id="preview-title">Image preview</h2>
+        <div class="preview-frame">
+          <div class="preview-scroll">
+            <canvas id="canvas">Uploaded image preview (canvas fallback text).</canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();"></script>
+  <script>
+    // Simplified clean version; fixes syntax errors in export functions
+    const imgInput=document.getElementById('imgInput');
+    const canvas=document.getElementById('canvas');
+    const ctx=canvas.getContext('2d');
+    const img=new Image();
+    const qualityRange=document.getElementById('qualityRange');
+    const qualityVal=document.getElementById('qualityVal');
+    const statusEl=document.getElementById('status');
+    const progressBar=document.getElementById('progressBar');
+    const generateBtn=document.getElementById('generateBtn');
+    const cancelBtn=document.getElementById('cancelBtn');
+    const paletteDiv=document.getElementById('palette');
+    const copyFormatSel=document.getElementById('copyFormat');
+    const btnJson=document.getElementById('downloadJson');
+    const btnGpl=document.getElementById('downloadGpl');
+    const btnSvg=document.getElementById('downloadSvg');
+
+    let lastColors=[];
+
+    qualityRange.addEventListener('input',()=>qualityVal.value=qualityRange.value);
+    imgInput.addEventListener('change',e=>{
+      const file=e.target.files[0];if(!file)return;const r=new FileReader();
+      r.onload=ev=>{img.onload=()=>{canvas.width=img.width;canvas.height=img.height;ctx.drawImage(img,0,0);status('Image loaded. Ready.');};img.src=ev.target.result;};r.readAsDataURL(file);
+    });
+
+    function status(m){statusEl.textContent=m;}
+    function relLum([r,g,b]){const s=[r,g,b].map(v=>v/255);const l=s.map(v=>v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4));return 0.2126*l[0]+0.7152*l[1]+0.0722*l[2];}
+    function contrastRatio(a,b){const L1=relLum(a),L2=relLum(b);return (Math.max(L1,L2)+.05)/(Math.min(L1,L2)+.05);}
+    function rgbToHex(r,g,b){return'#'+[r,g,b].map(x=>x.toString(16).padStart(2,'0')).join('');}
+    function toHSL({r,g,b}){r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b);let h,s,l=(mx+mn)/2;if(mx===mn){h=s=0;}else{const d=mx-mn;s=l>0.5?d/(2-mx-mn):d/(mx+mn);switch(mx){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;case b:h=(r-g)/d+4;break;}h/=6;}return`hsl(${Math.round(h*360)}, ${Math.round(s*100)}%, ${Math.round(l*100)}%)`;}
+
+    async function copyHex(hex){try{await navigator.clipboard.writeText(hex);status(`Copied ${hex}.`);}catch(e){status(`Cannot copy ${hex}.`);}}
+
+    function exportJSON(){const data={name:'Palette',colors:lastColors.map(c=>({hex:rgbToHex(c.r,c.g,c.b),...c}))};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});download('palette.json',blob);}
+    function exportGPL(){const header=['GIMP Palette','Name: Generated Palette','Columns: 8','#'];const lines=lastColors.map(c=>`${c.r}\t${c.g}\t${c.b}\t${rgbToHex(c.r,c.g,c.b)}`);const content=header.concat(lines).join('\n');download('palette.gpl',new Blob([content],{type:'text/plain'}));}
+    function exportSVG(){const cols=8,cell=40,pad=4;const rows=Math.ceil(lastColors.length/cols);const w=cols*cell+(cols+1)*pad,h=rows*cell+(rows+1)*pad;let svg=`<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}">`;let i=0;for(let r=0;r<rows;r++){for(let c=0;c<cols;c++){if(i>=lastColors.length)break;const x=pad+c*(cell+pad),y=pad+r*(cell+pad);const hex=rgbToHex(lastColors[i].r,lastColors[i].g,lastColors[i].b);svg+=`<rect x="${x}" y="${y}" width="${cell}" height="${cell}" fill="${hex}"/>`;i++;}}svg+='</svg>';download('palette.svg',new Blob([svg],{type:'image/svg+xml'}));}
+
+    function download(name,blob){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500);}
+
+    btnJson.onclick=exportJSON;btnGpl.onclick=exportGPL;btnSvg.onclick=exportSVG;
+
+    // ===================== K-MEANS (Web Worker) + GENERATE =====================
+    let workerUrl=null; let worker=null;
+    function buildWorker(){
+      if(workerUrl) URL.revokeObjectURL(workerUrl);
+      const code=`self.onmessage=function(e){const{pixels,k,init,maxIter}=e.data;const n=pixels.length/4;const samples=new Array(n);for(let i=0,j=0;i<n;i++,j+=4){samples[i]=[pixels[j],pixels[j+1],pixels[j+2]];}function d2(a,b){const dr=a[0]-b[0],dg=a[1]-b[1],db=a[2]-b[2];return dr*dr+dg*dg+db*db;}function randInit(){const ch=new Set();const c=[];while(c.length<k){const idx=Math.floor(Math.random()*n);if(!ch.has(idx)){ch.add(idx);c.push(samples[idx].slice());}}return c;}function pp(){const c=[samples[Math.floor(Math.random()*n)].slice()];while(c.length<k){const dst=samples.map(s=>c.reduce((m,cc)=>Math.min(m,d2(s,cc)),Infinity));let sum=0;for(const v of dst) sum+=v;let r=Math.random()*sum,idx=0;for(;idx<dst.length;idx++){r-=dst[idx];if(r<=0)break;}c.push(samples[Math.min(idx,samples.length-1)].slice());}return c;}let centers=(init==='pp')?pp():randInit();let labels=new Array(n).fill(0);let changed=true,iter=0;while(changed&&iter<maxIter){changed=false;iter++;for(let i=0;i<n;i++){let best=0,bestD=Infinity;const s=samples[i];for(let c=0;c<k;c++){const dist=d2(s,centers[c]);if(dist<bestD){bestD=dist;best=c;}}if(labels[i]!==best){labels[i]=best;changed=true;}}const sums=Array.from({length:k},()=>[0,0,0,0]);for(let i=0;i<n;i++){const l=labels[i],s=samples[i];sums[l][0]+=s[0];sums[l][1]+=s[1];sums[l][2]+=s[2];sums[l][3]++;}for(let c=0;c<k;c++){if(sums[c][3]>0){centers[c]=[Math.round(sums[c][0]/sums[c][3]),Math.round(sums[c][1]/sums[c][3]),Math.round(sums[c][2]/sums[c][3])];}}if(iter%2===0) self.postMessage({type:'progress',value:Math.min(95,Math.round((iter/maxIter)*100))});}self.postMessage({type:'done',centers,iterations:iter});};`;
+      workerUrl=URL.createObjectURL(new Blob([code],{type:'application/javascript'}));
+      worker=new Worker(workerUrl);
+      worker.onmessage=(e)=>{const{type}=e.data; if(type==='progress'){ setProgress(e.data.value); } else if(type==='done'){ renderPalette(e.data.centers); setProgress(100); status(`Palette generated in ${e.data.iterations} iterations.`); enableUI(); }};
+    }
+    function destroyWorker(){ if(worker){worker.terminate();} if(workerUrl){URL.revokeObjectURL(workerUrl); workerUrl=null;} worker=null; }
+
+    function setProgress(p){progressBar.style.width=p+'%';}
+    function disableUI(){generateBtn.disabled=true; cancelBtn.disabled=false; cancelBtn.setAttribute('aria-disabled','false');}
+    function enableUI(){generateBtn.disabled=false; cancelBtn.disabled=true; cancelBtn.setAttribute('aria-disabled','true'); setProgress(0);}    
+
+    function generatePalette(){
+      if(!canvas.width||!canvas.height){status('Please upload an image first.');return;}
+      if(!worker) buildWorker();
+      const q=parseInt(qualityRange.value,10)/100;
+      const tw=Math.max(1,Math.round(canvas.width*q));
+      const th=Math.max(1,Math.round(canvas.height*q));
+      const tmp=document.createElement('canvas'); tmp.width=tw; tmp.height=th;
+      const tctx=tmp.getContext('2d',{willReadFrequently:true}); tctx.drawImage(canvas,0,0,tw,th);
+      const imgData=tctx.getImageData(0,0,tw,th);
+      const k=parseInt(document.getElementById('kInput').value,10);
+      const init=document.querySelector('input[name="initMethod"]:checked').value;
+      status('Generating palette…'); setProgress(10); disableUI();
+      worker.postMessage({pixels:imgData.data,k,init,maxIter:12});
+    }
+    function cancelGeneration(){ if(!worker) return; destroyWorker(); enableUI(); status('Generation canceled.'); }
+
+    function renderPalette(centers){
+      // enable downloads
+      btnJson.disabled=btnGpl.disabled=btnSvg.disabled=false; btnJson.setAttribute('aria-disabled','false'); btnGpl.setAttribute('aria-disabled','false'); btnSvg.setAttribute('aria-disabled','false');
+      paletteDiv.innerHTML='';
+      const colors=centers.map(([r,g,b])=>({r,g,b,L:0.2126*(r/255)+0.7152*(g/255)+0.0722*(b/255)}));
+      colors.sort((a,b)=>a.L-b.L);
+      lastColors=colors.map(({r,g,b})=>({r,g,b}));
+      const fmt=copyFormatSel.value;
+      colors.forEach((c,i)=>{const hex=rgbToHex(c.r,c.g,c.b).toUpperCase(); const sw=document.createElement('div'); sw.className='color-swatch copyable'; sw.setAttribute('role','listitem'); sw.tabIndex=0; sw.setAttribute('data-hex',hex); sw.setAttribute('aria-label',`Color ${i+1}: ${hex}. Press Enter or Space to copy as ${fmt.toUpperCase()}.`); sw.title='Click or press Enter/Space to copy'; sw.style.background=hex; const cb=contrastRatio([c.r,c.g,c.b],[0,0,0]); const cw=contrastRatio([c.r,c.g,c.b],[255,255,255]); sw.style.color=cw>=cb?'#fff':'#000'; sw.textContent=hex; paletteDiv.appendChild(sw);});
+    }
+
+    // copy handlers
+    paletteDiv.addEventListener('click',e=>{const el=e.target.closest('.color-swatch.copyable'); if(!el) return; copyColor(el);});
+    paletteDiv.addEventListener('keydown',e=>{const el=e.target.closest('.color-swatch.copyable'); if(!el) return; if(e.key==='Enter'||e.key===' '){e.preventDefault(); copyColor(el);}});
+
+    // bind buttons
+    generateBtn.addEventListener('click',generatePalette);
+    cancelBtn.addEventListener('click',cancelGeneration);
+
+  </script>
+</body>
+</html>
